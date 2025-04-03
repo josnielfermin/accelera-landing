@@ -55,6 +55,7 @@ export default function Coin() {
         if (coinRef.current) {
           // Solo rotar si el mouse no está sobre el modelo
           coinRef.current.rotation.y += 0.005; // Rota en el eje Y si no se está interactuando
+          // coinRef.current.sh;
           // if (!isHovered) {
           // }
         }

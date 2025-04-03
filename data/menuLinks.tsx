@@ -4,7 +4,7 @@ export const menuLinksLanding = [
     href: '/',
   },
   {
-    name: 'Buy $Linus',
+    name: 'SEASON ZERO',
     href: '/season-zero',
   },
   {

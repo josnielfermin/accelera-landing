@@ -47,7 +47,7 @@ body {
   @apply flex items-center justify-center px-5 py-3 text-sm font-normal transition rounded-lg focus:outline-none;
 }
 .button-primary {
-  @apply relative flex items-center justify-center px-[60px] py-[15px] text-sm font-normal transition rounded-[10px] focus:outline-none text-black bg-white overflow-hidden [box-shadow:_0px_0px_20px_0px_rgba(255,_255,_255,_0.25)];
+  @apply relative flex items-center justify-center px-[60px] py-[15px] text-sm font-semibold bg-pastel-green-400 transition rounded-none focus:outline-none text-black overflow-hidden [clip-path:polygon(0%_20%,_10%_0%,_100%_0%,_100%_80%,_90%_100%,_0%_100%)];
   transition: all 0.3s ease;
 }
 
@@ -64,10 +64,10 @@ body {
   opacity: 1;
 }
 
-.button-secondary {
+/* .button-secondary {
   @apply relative flex items-center justify-center px-[30px] py-[10px] text-sm font-normal transition rounded-[10px] focus:outline-none text-white bg-picton-blue-400 overflow-hidden [box-shadow:_0px_0px_20px_0px_rgba(255,_255,_255,_0.25)];
   transition: all 0.3s ease;
-}
+} */
 
 .hide-scroll::-webkit-scrollbar {
   display: none !important;
