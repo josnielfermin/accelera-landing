@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('./Fontello.css');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('/static/fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  /* background-image: url('/static/images/background.png'); */
+  background-color: transparent;
+  overflow-x: hidden;
+  @apply text-base;
+  scroll-behavior: smooth;
+}
+
+.container {
+  @apply w-full max-w-[1720px] mx-auto;
+}
+
+.bebas-neue-regular {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/************* ScrollBar ***********/
+::-webkit-scrollbar {
+  @apply mr-[10px] w-[10px];
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+/* ::-webkit-scrollbar-thumb {
+  @apply w-2 bg-white border-4 border-solid rounded-xl border-yellow-doge-500 bg-opacity-40;
+} */
+
+/************* Button ***********/
+.button {
+  @apply flex items-center justify-center px-5 py-3 text-sm font-normal transition rounded-lg focus:outline-none;
+}
+.button-primary {
+  @apply relative flex items-center justify-center px-[60px] py-[15px] text-sm font-normal transition rounded-[10px] focus:outline-none text-black bg-white overflow-hidden [box-shadow:_0px_0px_20px_0px_rgba(255,_255,_255,_0.25)];
+  transition: all 0.3s ease;
+}
+
+.button-primary:hover .icon-primary {
+  display: block;
+}
+
+.icon-primary {
+  @apply opacity-0 transition-transform duration-300;
+  display: none;
+}
+
+.button-primary:hover .icon-primary {
+  opacity: 1;
+}
+
+.button-secondary {
+  @apply relative flex items-center justify-center px-[30px] py-[10px] text-sm font-normal transition rounded-[10px] focus:outline-none text-white bg-picton-blue-400 overflow-hidden [box-shadow:_0px_0px_20px_0px_rgba(255,_255,_255,_0.25)];
+  transition: all 0.3s ease;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none !important;
+}
