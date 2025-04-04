@@ -2,27 +2,24 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader'; // Asegúrate de que el loader esté importado
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 
-export default function Coin() {
+export default function Scene() {
   const mountRef = useRef<HTMLDivElement>(null);
   const coinRef = useRef<THREE.Group | null>(null); // Referencia para el modelo
-  // const [isHovered, setIsHovered] = useState(false); // Estado para saber si el mouse está sobre el modelo
 
   useEffect(() => {
     if (mountRef.current) {
       // Crear la escena y la cámara
       const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-      );
+      const container = mountRef.current;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 
       // Crear el renderer
       const renderer = new THREE.WebGLRenderer({ alpha: true }); // Habilitar transparencia
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(width, height);
       renderer.setClearColor(0x000000, 0); // Color negro con opacidad 0 (transparente)
       mountRef.current.appendChild(renderer.domElement);
 
@@ -53,11 +50,7 @@ export default function Coin() {
         requestAnimationFrame(animate);
 
         if (coinRef.current) {
-          // Solo rotar si el mouse no está sobre el modelo
-          coinRef.current.rotation.y += 0.005; // Rota en el eje Y si no se está interactuando
-          // coinRef.current.sh;
-          // if (!isHovered) {
-          // }
+          coinRef.current.rotation.x += 0.005; // Rota en el eje Y
         }
 
         // Renderizar la escena
@@ -66,31 +59,9 @@ export default function Coin() {
 
       animate();
 
-      // // Función para manejar la entrada del mouse (hover)
-      // const onMouseEnter = () => {
-      //   // Solo cambiar el estado si no está ya en el estado "hover"
-      //   if (!isHovered) {
-      //     setIsHovered(true); // Detener la rotación al pasar el mouse sobre el modelo
-      //   }
-      // };
-
-      // // Función para manejar la salida del mouse
-      // const onMouseLeave = () => {
-      //   // Solo cambiar el estado si no está ya en el estado "no hover"
-      //   if (isHovered) {
-      //     setIsHovered(false); // Reanudar la rotación al sacar el mouse
-      //   }
-      // };
-
-      // Escuchar eventos de mouse
-      // mountRef.current.addEventListener('mouseenter', onMouseEnter);
-      // mountRef.current.addEventListener('mouseleave', onMouseLeave);
-
       // Limpiar cuando el componente se desmonte
       return () => {
         mountRef.current?.removeChild(renderer.domElement);
-        // mountRef.current?.removeEventListener('mouseenter', onMouseEnter);
-        // mountRef.current?.removeEventListener('mouseleave', onMouseLeave);
       };
     }
   }, []);
@@ -98,8 +69,7 @@ export default function Coin() {
   return (
     <div
       ref={mountRef}
-      style={{ width: '100%', height: '100%' }}
-      className="absolute top-0 left-0 w-full h-full !bg-transparent"
+      className="w-full h-full aspect-square max-w-[340px] !bg-transparent"
     />
   );
 }

@@ -1,4 +1,5 @@
 import Scene from '../Scene';
+import { Button } from '@/components/UI';
 import Image from 'next/image';
 const users = [
   {
@@ -29,7 +30,6 @@ const users = [
 const Landing = () => {
   return (
     <div className="w-full h-full">
-      {/* <Scene /> */}
       <video
         className="w-full h-full object-cover absolute top-0 left-0 z-[-10]"
         style={{ mixBlendMode: 'lighten' }}
@@ -55,18 +55,19 @@ const Landing = () => {
         className="absolute top-0 left-0 -z-[5] object-cover w-full h-full mix-blend-multiply"
       />
       <div className="bg-[#151515] bg-opacity-60 w-full h-full absolute top-0 left-0 z-[-11]"></div>
-      <section className="relative w-full min-h-[calc(100vh-80px)] flex flex-col container py-10 px-10">
+      <section className="relative w-full min-h-[calc(100vh-153px)] flex flex-col container pl-12">
         <div className="w-[1px] absolute bottom-0 left-0 h-full bg-gradient-to-t from-pastel-green-400/50 to-white/20 bg-blend-overlay z-[-10]"></div>
         <h1 className="text-8xl font-normal leading-tight w-full text-center text-white">
           Converge Meets <span className="font-bold">Acceleration</span>
         </h1>
-        <div className="flex items-baseline justify-between gap-8">
-          <div className="space-y-32">
-            <p className="text-lg md:text-xl text-white max-w-xl">
+        <div className="flex items-start justify-between gap-8 h-[558px] mt-10">
+          <div className="flex flex-col justify-between h-full">
+            <p className="text-lg md:text-xl text-white max-w-2xl relative ml-5">
               Accelera is a next-generation CDP protocol on Converge, offering
               borrowers superior strategy composability with user-set interest
               rates, instant liquidity, efficient leverage, and native
               stablecoin yields.
+              <div className="border-[#D9D9D9] border backdrop-blur-[2px] bg-[#D9D9D9]/20 w-[70px] h-[70px] absolute -left-[103px] top-1/2 -translate-y-1/2 rounded-full"></div>
             </p>
 
             <div className="mt-8 flex items-center gap-10">
@@ -92,37 +93,47 @@ const Landing = () => {
               </div>
             </div>
 
-            {/* <div className="mt-8">
-              <p className="text-xl font-medium mb-4">
+            <div className="mt-8">
+              <p className="text-xl font-normal mb-4 text-white">
                 Backed by <span className="font-bold">The Best</span>
               </p>
-              <div className="flex flex-wrap gap-6 items-center">
+              <div className="flex overflow-scroll gap-6 items-center max-w-xl">
                 <div className="bg-white/10 px-4 py-2 rounded-lg">Ethena</div>
                 <div className="bg-white/10 px-4 py-2 rounded-lg">Liquity</div>
                 <div className="bg-white/10 px-4 py-2 rounded-lg">ORBS</div>
                 <div className="bg-white/10 px-4 py-2 rounded-lg">Paradigm</div>
               </div>
-            </div> */}
+            </div>
           </div>
 
           <div className="relative flex justify-center">
-            <div className="absolute top-0 right-0 bg-background/80 backdrop-blur-sm p-6 rounded-lg">
-              <h3 className="text-3xl font-bold mb-4">
-                Season <span className="text-primary">Zero</span>
+            <div className="bg-transparent rounded-none flex flex-col items-center">
+              <Scene />
+              <h3 className="text-4xl font-normal mb-4 text-white text-center">
+                Season <span className="font-bold">Zero</span>
               </h3>
-              <button className="btn-primary w-full">JOIN THE WAITLIST</button>
+              <Button variant="primary" className="whitespace-nowrap w-[90%]">
+                JOIN THE WAITLIST
+              </Button>
 
-              <div className="grid grid-cols-2 gap-4 mt-6">
-                <div>
-                  <p className="text-2xl font-bold">2,938</p>
-                  <p className="text-sm text-white/70">HOLDERS</p>
+              <div className="grid grid-cols-2 mt-6 text-white relative w-full">
+                <div className="w-full absolute top-0 left-0 h-[1px] bg-pastel-green-400/50 bg-blend-overlay z-[-10]"></div>
+                <div className="flex flex-col items-center py-3 !px-6 relative">
+                  <div className="w-[1px] absolute bottom-0 right-[-1.5px] h-full bg-gradient-to-t from-pastel-green-400/50 to-white/20 bg-blend-overlay z-[-10]"></div>
+                  <p className="text-3xl font-normal">2,938</p>
+                  <p className="text-lg tracking-[5.4px] font-bold">HOLDERS</p>
                 </div>
-                <div>
-                  <p className="text-2xl font-bold">$5.96B</p>
-                  <p className="text-sm text-white/70">TVL</p>
+                <div className="flex flex-col items-center py-3 !px-6">
+                  <p className="text-3xl font-normal">$5.96B</p>
+                  <p className="text-lg tracking-[5.4px] font-bold">TVL</p>
                 </div>
               </div>
             </div>
+            <div className="w-[1px] absolute bottom-0 right-0 h-full bg-gradient-to-t from-pastel-green-400/50 to-white/20 bg-blend-overlay z-[-10]"></div>
+            <div className="w-[1px] absolute bottom-0 left-0 h-full bg-gradient-to-t from-pastel-green-400/50 to-white/20 bg-blend-overlay z-[-10]"></div>
+            <div className="w-full absolute bottom-0 left-0 h-[1px] bg-pastel-green-400/50 bg-blend-overlay z-[-10]"></div>
+            <div className="absolute -top-2.5 -left-2.5 bg-[#D9D9D9] w-5 h-5"></div>
+            <div className="absolute -bottom-2.5 -right-2.5 bg-[#D9D9D9] w-5 h-5"></div>
           </div>
         </div>
 
