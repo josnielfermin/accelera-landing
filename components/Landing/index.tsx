@@ -35,8 +35,7 @@ const Landing = () => {
         className="absolute top-0 left-0 -z-[5] object-cover w-full h-full mix-blend-multiply"
       />
       <div className="bg-[#151515]/60 w-full h-full absolute top-0 left-0 z-[-11]"></div>
-      <section className="relative w-full min-h-[calc(100vh-153px)] flex flex-col container pl-12">
-        <SocialSidebar />
+      <section className="relative w-full min-h-[calc(100vh-153px)] flex flex-col pl-12 container">
         <div className="w-[1px] absolute top-0 left-0 h-[3000px] bg-gradient-to-t from-pastel-green-400/50 to-white/20 bg-blend-overlay z-[-10]"></div>
         <TitleAnimation></TitleAnimation>
         <div className="flex items-start justify-between gap-8 h-[558px] mt-10">
@@ -74,20 +73,48 @@ const Landing = () => {
 
             <Backers />
           </div>
-          {/* <div className="absolute w-full max-w-md h-[600px] top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2">
-            <spline-viewer
+          <div className="absolute h-[789px] w-[789px] bottom-[-130px] right-[300px] mix-blend-lighten">
+            {/* <spline-viewer
               url="https://prod.spline.design/fA3jwoAwjAbouj0u/scene.splinecode"
               className="w-full h-full object-contain"
-            />
-          </div> */}
+            /> */}
+            {/* <Image
+              src={'/static/images/landing/accelera.png'}
+              alt="usdx"
+              width={789}
+              height={789}
+              className="mix-blend-lighten"
+            /> */}
+            <video
+              className="w-full h-full"
+              style={{ mixBlendMode: 'lighten' }}
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source
+                src={'/static/images/landing/accelera.mp4'}
+                type="video/mp4"
+              ></source>
+            </video>
+          </div>
 
-          <div className="relative flex justify-center">
+          <div className="relative flex justify-center max-[1865px]:mr-[72px]">
+            <SocialSidebar />
             <div className="bg-transparent rounded-none flex flex-col items-center">
               {/* <Scene /> */}
               <div className="relative w-full max-w-md h-[300px] mx-auto">
                 <spline-viewer
                   url="https://prod.spline.design/TWI18UldhK6eBwx1/scene.splinecode"
                   className="w-full h-full object-contain"
+                />
+                <Image
+                  src={'/static/images/landing/usdx.png'}
+                  alt="usdx"
+                  width={329}
+                  height={329}
+                  className="mix-blend-lighten z-[10]"
                 />
               </div>
               <h3 className="text-4xl font-normal mb-4 text-white text-center">
@@ -110,7 +137,7 @@ const Landing = () => {
                 </div>
               </div>
             </div>
-            <div className="w-[1px] absolute bottom-0 right-0 h-full bg-gradient-to-t from-pastel-green-400/50 to-white/20 bg-blend-overlay z-[-10]"></div>
+            <div className="w-[1px] absolute bottom-0 right-0 h-[686px] bg-gradient-to-t from-pastel-green-400/50 to-white/20 bg-blend-overlay z-[-10]"></div>
             <div className="w-[1px] absolute bottom-0 left-0 h-full bg-gradient-to-t from-pastel-green-400/50 to-white/20 bg-blend-overlay z-[-10]"></div>
             <div className="w-full absolute bottom-0 left-0 h-[1px] bg-pastel-green-400/50 bg-blend-overlay z-[-10]"></div>
             <div className="absolute -top-2.5 -left-2.5 bg-[#D9D9D9] w-5 h-5"></div>
