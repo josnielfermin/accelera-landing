@@ -448,6 +448,18 @@
 .icon-arrow-right-up:before {
   content: '\e8bf';
 } /* '' */
+.icon-telegram-1:before {
+  content: '\e8c0';
+} /* '' */
+.icon-gitbook:before {
+  content: '\e8c1';
+} /* '' */
+.icon-medium-1:before {
+  content: '\e8c2';
+} /* '' */
+.icon-discord-1:before {
+  content: '\e8c3';
+} /* '' */
 .icon-search-remove:before {
   content: '\e959';
 } /* '' */

@@ -15,31 +15,89 @@ export const MAIN_BRANDS = [
 
 export const SOCIALS = [
   {
-    logo: '/static/images/footer/telegram2.svg',
-    url: 'https://t.me/LinusonLinea',
-    name: 'Telegram',
-    background:
-      '[background:linear-gradient(253deg,_#209BF6_3.82%,_#BCE7FF_80.32%)]',
+    href: 'https://discord.gg/accelera',
+    iconClass: 'icon-discord-1',
   },
   {
-    logo: '/static/images/footer/twitter2.svg',
-    url: 'https://twitter.com/LinusOnLinea',
-    name: 'X',
-    background:
-      '[background:linear-gradient(253deg,_#444_3.82%,_#989898_80.32%)]',
+    href: 'https://medium.com/accelera',
+    iconClass: 'icon-medium-1',
   },
   {
-    logo: '/static/images/footer/discord.svg',
-    url: 'https://discord.gg/LinusonLinea',
-    name: 'Discord',
-    background:
-      '[background:linear-gradient(253deg,_#5166FC_3.82%,_#9EA7FF_80.32%)]',
+    href: 'https://gitbook.com/accelera',
+    iconClass: 'icon-gitbook',
   },
   {
-    logo: '/static/images/footer/youtube.svg',
-    url: 'https://www.youtube.com/channel/',
-    name: 'Youtube',
-    background:
-      '[background:linear-gradient(253deg,_#FF4343_3.82%,_#F88E92_80.32%)]',
+    href: 'https://telegram/accelera',
+    iconClass: 'icon-telegram-1',
+  },
+];
+
+export const USERS = [
+  {
+    id: 1,
+    image: '/static/images/landing/user-1.png',
+  },
+  {
+    id: 2,
+    image: '/static/images/landing/user-2.png',
+  },
+  {
+    id: 3,
+    image: '/static/images/landing/user-3.png',
+  },
+  {
+    id: 4,
+    image: '/static/images/landing/user-4.png',
+  },
+  {
+    id: 5,
+    image: '/static/images/landing/user-5.png',
+  },
+  {
+    id: 6,
+    image: '/static/images/landing/user-6.png',
+  },
+];
+
+export const BACKERS = [
+  {
+    image: '/static/images/landing/backers/ethena.png',
+    name: 'Ethena',
+  },
+  {
+    image: '/static/images/landing/backers/liquity.png',
+    name: 'Liquity',
+  },
+  {
+    image: '/static/images/landing/backers/securitize.png',
+    name: 'Securitize',
+  },
+  {
+    image: '/static/images/landing/backers/pyth.png',
+    name: 'Pyth',
+  },
+  {
+    image: '/static/images/landing/backers/layer-zero.png',
+    name: 'Layer Zero',
+  },
+  {
+    image: '/static/images/landing/backers/ethereal.png',
+    name: 'Ethereal',
+  },
+  {
+    image: '/static/images/landing/backers/pendle.png',
+    name: 'Pendle',
+  },
+  {
+    image: '/static/images/landing/backers/wormhole.png',
+    name: 'Wormhole',
+  },
+  {
+    image: '/static/images/landing/backers/redstone.png',
+    name: 'Redstone',
+  },
+  {
+    image: '/static/images/landing/backers/spectra.png',
+    name: 'Spectra',
   },
 ];

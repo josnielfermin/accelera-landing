@@ -14,7 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <html lang="en" className="antialiased">
       <body
         suppressHydrationWarning={true}
-        className={`${instrumentSans.className} relative min-h-screen flex flex-col`}
+        className={`${instrumentSans.className} relative min-h-screen flex flex-col overflow-hidden`}
       >
         <Header />
         {children}
