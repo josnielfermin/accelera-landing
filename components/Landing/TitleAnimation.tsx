@@ -3,9 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 
 const TitleAnimation = () => {
-  const [current, setCurrent] = useState(0);
-  const [animating, setAnimating] = useState(false);
-  const [show, setShow] = useState(true);
   const [entry1, setEntry1] = useState(true);
   const [entry2, setEntry2] = useState(false);
 
@@ -24,14 +21,14 @@ const TitleAnimation = () => {
   }, []);
 
   return (
-    <div className="relative h-[8rem] overflow-hidden flex items-center justify-center">
+    <div className="relative h-[8rem] overflow-hidden flex items-center justify-center max-md:justify-start w-full">
       <h1
-        className={`text-4xl md:text-8xl font-normal text-white absolute transition-all duration-500 h-[96px]`}
+        className={`max-md:text-[32px] text-4xl min-[900px]:text-5xl min-[1070px]:text-6xl xl:text-7xl min-[1560px]:text-8xl font-normal text-white absolute transition-all duration-500 h-[96px]`}
       >
         <div
           className={`${
             entry1 ? 'animate-slide-up-in' : 'animate-slide-up-out'
-          } absolute left-1/2 -translate-x-1/2 w-full h-full flex items-center justify-center whitespace-nowrap gap-6`}
+          } absolute left-1/2 -translate-x-1/2 w-full h-full flex max-md:flex-col max-md:items-start max-md:justify-start items-center justify-center whitespace-nowrap gap-6`}
         >
           <div>Converge Meets</div>
           <div className="font-bold">Acceleration</div>
@@ -39,7 +36,7 @@ const TitleAnimation = () => {
         <div
           className={`${
             entry2 ? 'animate-slide-up-in' : 'animate-slide-up-out'
-          } absolute left-1/2 -translate-x-1/2 w-full h-full flex items-center justify-center whitespace-nowrap gap-6`}
+          } absolute left-1/2 -translate-x-1/2 w-full h-full flex max-md:flex-col max-md:items-start max-md:justify-start items-center justify-center whitespace-nowrap gap-6`}
         >
           <div>Instant Liquidity,</div>{' '}
           <div className="font-bold">On Your Terms</div>

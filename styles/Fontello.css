@@ -460,6 +460,9 @@
 .icon-discord-1:before {
   content: '\e8c3';
 } /* '' */
+.icon-menu-1:before {
+  content: '\e8c5';
+} /* '' */
 .icon-search-remove:before {
   content: '\e959';
 } /* '' */

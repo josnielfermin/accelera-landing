@@ -6,9 +6,5 @@ export const metadata: Metadata = {
   description: 'Finance App',
 };
 export default function HomePage() {
-  return (
-    <main className="">
-      <Landing />
-    </main>
-  );
+  return <Landing />;
 }
