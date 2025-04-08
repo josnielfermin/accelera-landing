@@ -15,17 +15,17 @@ const RightColumn = () => {
         {/* <Coin /> */}
         <div className="flex lg:flex-col max-[380px]:flex-col w-full items-center">
           <div className="relative w-full max-w-md h-[300px] max-2xl:h-[210px] mx-auto flex items-center justify-center">
-            {/* <spline-viewer
+            <SplineViewer
               url="https://prod.spline.design/TWI18UldhK6eBwx1/scene.splinecode"
               className="w-full h-full object-contain"
-            /> */}
-            <Image
+            />
+            {/* <Image
               src={'/static/images/landing/usdx.png'}
               alt="usdx"
               width={329}
               height={329}
               className="mix-blend-lighten z-[10] max-2xl:min-w-[200px] max-2xl:min-h-[200px] max-2xl:w-[200px] max-2xl:h-[200px]"
-            />
+            /> */}
           </div>
           <div className="flex flex-col w-full items-center max-lg:-ml-8 max-[380px]:ml-auto">
             <h3 className="text-4xl max-lg:text-2xl font-normal lg:mb-4 text-white text-center">
