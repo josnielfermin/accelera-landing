@@ -12,14 +12,14 @@ const LeftColumn = () => {
         <div className="border-[#D9D9D9] border backdrop-blur-[2px] bg-[#D9D9D9]/20 w-[70px] h-[70px] absolute -left-[103px] top-1/2 -translate-y-1/2 rounded-full max-lg:hidden"></div>
       </div>
 
-      <div className="mt-8 flex items-center gap-10 max-[1180px]:gap-2 max-[1180px]:flex-col max-[1180px]:items-start">
+      <div className="mt-8 max-lg:mt-[250px] max-[280px]:mt-[290px] flex items-center gap-10 max-[1180px]:gap-2 max-[1180px]:flex-col max-[1180px]:items-start">
         <div className="lg:space-y-2 text-white">
           <h2 className="text-3xl 2xl:text-6xl font-normal leading-none">
             542,897
           </h2>
           <p className="text-3xl 2xl:text-6xl font-bold leading-none">Users</p>
         </div>
-        <div className="flex items-center max-[1180px]:ml-4">
+        <div className="flex items-center max-[1180px]:ml-4 relative z-[5]">
           {USERS.map((user) => (
             <div
               key={user.id}

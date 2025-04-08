@@ -7,7 +7,7 @@ import SplineViewer from '@/components/Landing/Spline';
 
 const RightColumn = () => {
   return (
-    <div className="relative flex max-lg:flex-col max-lg:items-center justify-center max-[1865px]:mr-[72px] max-lg:mx-auto max-lg:w-full">
+    <div className="relative flex max-lg:flex-col max-lg:items-center justify-center max-[1865px]:mr-[72px] max-lg:mx-auto max-lg:w-full max-lg">
       <div className="absolute w-full max-lg:hidden">
         <SocialSidebar />
       </div>
