@@ -5,7 +5,7 @@ import Backers from '@/components/Landing/Backers';
 const LeftColumn = () => {
   return (
     <div className="flex flex-col justify-between h-full">
-      <div className="text-lg 2xl:text-xl text-white max-w-2xl relative leading-[1.1] lg:ml-5">
+      <div className="text-lg 2xl:text-xl max-lg:text-sm max-sm:text-xs text-white max-w-2xl relative leading-[1.1] lg:ml-5">
         Accelera is a next-generation CDP protocol on Converge, offering
         borrowers superior strategy composability with user-set interest rates,
         instant liquidity, efficient leverage, and native stablecoin yields.

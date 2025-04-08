@@ -36,7 +36,7 @@ const Header = () => {
         ref={ref}
       >
         <div
-          className="icon-menu-1 text-xl text-white absolute top-1/2 -translate-y-1/2 left-5 rounded-full p-4 lg:hidden"
+          className="icon-menu-1 text-xl text-white absolute top-1/2 -translate-y-1/2 left-5 rounded-full p-4 lg:hidden z-[10]"
           onClick={() => {
             setIsVisible(!isVisible);
           }}
@@ -44,7 +44,7 @@ const Header = () => {
         <div
           className={`fixed bottom-0 left-1/2 -translate-x-1/2 w-[150vw] z-[9000] h-[150vw] transition-all lg:hidden ${
             isVisible
-              ? 'visible translate-y-[70%]'
+              ? 'visible max-lg:translate-y-[78%] max-[890px]:translate-y-[73%] max-[725px]:translate-y-[66%] max-[580px]:translate-y-[60%] max-[490px]:translate-y-[52%] max-[405px]:translate-y-[44%] max-[345px]:translate-y-[34%]'
               : '[visibility:hidden] translate-y-[100%]'
           }`}
         >
@@ -89,7 +89,10 @@ const Header = () => {
             </Button>
           </div>
         </div>
-        <Link href="/" className="flex items-center relative pr-10 h-full">
+        <Link
+          href="/"
+          className="flex items-center max-xxs:justify-end max-xxs:w-full relative pr-10 h-full"
+        >
           <Image
             src="/static/images/header/accelera-logo.png"
             alt="Accelera Logo"
