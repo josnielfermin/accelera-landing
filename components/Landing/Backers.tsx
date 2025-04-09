@@ -37,8 +37,8 @@ const Backers = () => {
 
   return (
     <div className="relative mt-8 flex flex-col max-lg:items-center max-lg:mx-auto gap-3 2xl:max-w-[600px] max-w-[500px]">
-      <div className="w-[200%] absolute top-0 right-0 h-[1px] bg-gradient-to-r from-pastel-green-400/30 to-white/20 bg-blend-overlay z-[-10] max-lg:hidden"></div>
-      <div className="w-[1px] absolute top-0 right-0 h-[600px] bg-gradient-to-t from-pastel-green-400/30 to-white/20 bg-blend-overlay z-[-10] max-lg:hidden"></div>
+      <div className="w-[200%] absolute top-0 right-0 h-[1px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
+      <div className="w-[1px] absolute top-0 right-0 h-[600px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
       <div className="absolute -top-2.5 -left-[58px] bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>
       <div className="absolute -bottom-14 -right-2.5 bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>
       <div className="flex items-center justify-between w-full">

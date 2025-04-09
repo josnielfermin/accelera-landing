@@ -1,51 +1,57 @@
-'use client'
-import React, { useEffect } from 'react'
-import ReactDOM from 'react-dom'
+'use client';
+import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 
 interface ModalProps {
-  children: React.ReactNode
-  openModal: boolean
-  className?: string
-  persist?: boolean
-  setOpenModal: (openModal: boolean) => void
+  children: React.ReactNode;
+  openModal: boolean;
+  className?: string;
+  persist?: boolean;
+  setOpenModal: (openModal: boolean) => void;
 }
 
-const Modal = ({ children, openModal, className = '', setOpenModal, persist = false }: ModalProps) => {
+const Modal = ({
+  children,
+  openModal,
+  className = '',
+  setOpenModal,
+  persist = false,
+}: ModalProps) => {
   useEffect(() => {
     if (openModal) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden';
       // document.body.classList.add('modal-locked-screen')
       // document.body.className = 'modal-locked-screen'
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = 'unset';
       // document.body.classList.remove('modal-locked-screen')
     }
-  }, [openModal])
+  }, [openModal]);
 
   useEffect(() => {
     if (!persist) {
       const handleKeyDown = (event: KeyboardEvent) => {
         if (event.key === 'Escape') {
-          setOpenModal(false)
+          setOpenModal(false);
         }
-      }
+      };
 
-      window.addEventListener('keydown', handleKeyDown)
+      window.addEventListener('keydown', handleKeyDown);
 
       return () => {
-        window.removeEventListener('keydown', handleKeyDown)
-      }
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     }
-    return
-  }, [])
+    return;
+  }, []);
 
-  if (!openModal) return null
+  if (!openModal) return null;
 
   const handleCloseModal = () => {
     if (!persist) {
-      setOpenModal(false)
+      setOpenModal(false);
     }
-  }
+  };
 
   return ReactDOM.createPortal(
     <div
@@ -54,12 +60,15 @@ const Modal = ({ children, openModal, className = '', setOpenModal, persist = fa
       items-center justify-center mx-auto ${className}`}
       onClick={handleCloseModal}
     >
-      <div onClick={(e) => e.stopPropagation()} className="flex items-center justify-center ">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="flex items-center justify-center "
+      >
         {children}
       </div>
     </div>,
     document.body
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;
