@@ -91,14 +91,14 @@ const Header = () => {
         </div>
         <Link
           href="/"
-          className="flex items-center max-xxs:justify-end max-xxs:w-full relative pr-10 h-full"
+          className="flex items-center max-xxs:justify-end max-xxs:w-full relative pr-10 h-full max-[1865px]:ml-[31px] max-lg:ml-0"
         >
           <Image
             src="/static/images/header/accelera-logo.png"
             alt="Accelera Logo"
             width={158}
             height={47}
-            className=""
+            className="max-xl:w-[111px] max-xl:h-[32px]"
             quality={100}
           />
           <div className="w-[1px] absolute -top-10 right-0 h-[400%] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
@@ -115,7 +115,11 @@ const Header = () => {
           ))}
         </nav>
 
-        <Button href="/app" variant="primary" className="max-lg:hidden">
+        <Button
+          href="/app"
+          variant="primary"
+          className="max-lg:hidden max-[1865px]:mr-[31px] max-xl:w-[]"
+        >
           Launch App
         </Button>
       </div>

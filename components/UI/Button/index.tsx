@@ -1,36 +1,64 @@
-"use client"
+'use client';
 
-import React from "react"
-import Link from 'next/link'
-import Image from 'next/image'
-import cn from '@/utils/cn'
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import cn from '@/utils/cn';
 
 interface ButtonProps {
-  variant?: 'default' |'primary' | 'secondary' | 'tertiary'
-  className?: string
-  onClick?: () => void
-  children?: React.ReactNode
-  disabled?: boolean
-  href?: string
-  icon?: string
+  variant?: 'default' | 'primary' | 'secondary' | 'tertiary';
+  className?: string;
+  onClick?: () => void;
+  children?: React.ReactNode;
+  disabled?: boolean;
+  href?: string;
+  icon?: string;
 }
 
-const Button = ({ children, onClick, href, disabled, className, variant = 'primary', icon, ...props }: ButtonProps) => {
+const AnimateFill = ({
+  variant = 'primary',
+}: {
+  variant: 'default' | 'primary' | 'secondary' | 'tertiary';
+}) => {
+  return (
+    <>
+      {variant === 'primary' && (
+        <div className="w-[80px] absolute left-0 top-0 h-[15px] bg-pastel-green-400 z-[-1]"></div>
+      )}
+    </>
+  );
+};
+
+const Button = ({
+  children,
+  onClick,
+  href,
+  disabled,
+  className,
+  variant = 'primary',
+  icon,
+  ...props
+}: ButtonProps) => {
   const variantClasses = {
     default: 'button-default',
     primary: 'button-primary',
     secondary: 'button-secondary',
     tertiary: 'button-tertiary',
-  }[variant]
+  }[variant];
 
-  const disabledClasses = 'opacity-40 cursor-not-allowed'
+  const disabledClasses = 'opacity-40 cursor-not-allowed';
 
-  const mergeClassName = cn('button', variantClasses, { [disabledClasses]: disabled }, className)
+  const mergeClassName = cn(
+    'button',
+    variantClasses,
+    { [disabledClasses]: disabled },
+    className
+  );
 
   const buttonContent = (
     <div className="flex items-center">
       {children}
-      {icon && <Image className={`ml-2 icon-${variant}`} src={icon} alt=""/>}
+      {icon && <Image className={`ml-2 icon-${variant}`} src={icon} alt="" />}
     </div>
   );
 
@@ -38,18 +66,17 @@ const Button = ({ children, onClick, href, disabled, className, variant = 'prima
     return (
       <Link href={href} onClick={onClick} className={mergeClassName} {...props}>
         {buttonContent}
+        <AnimateFill variant={variant} />
       </Link>
-    )
+    );
   }
 
   return (
     <button onClick={onClick} className={mergeClassName} {...props}>
       {buttonContent}
+      <AnimateFill variant={variant} />
     </button>
-  )
-}
+  );
+};
 
-export default Button
-
-
-
+export default Button;

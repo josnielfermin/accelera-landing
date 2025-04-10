@@ -31,7 +31,7 @@ export default function SplineViewer({ url, className }: SplineViewerProps) {
   return (
     <spline-viewer
       url={url}
-      className={className}
+      class={className}
       style={{ width: '100%', height: '100%' }}
     ></spline-viewer>
   );

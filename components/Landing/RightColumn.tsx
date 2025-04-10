@@ -18,10 +18,10 @@ const RightColumn = () => {
       <div className="bg-transparent rounded-none flex flex-col max-lg:flex-row max-md:flex-col w-full items-center">
         {/* <Coin /> */}
         <div className="flex lg:flex-col max-[380px]:flex-col w-full items-center">
-          <div className="relative w-full max-w-md h-[300px] max-2xl:h-[210px] mx-auto flex items-center justify-center">
+          <div className="relative w-full max-w-md h-[280px] max-2xl:h-[190px] mx-auto flex items-center justify-center overflow-hidden z-[6]">
             <SplineViewer
               url="https://prod.spline.design/TWI18UldhK6eBwx1/scene.splinecode"
-              className="w-full h-full object-contain"
+              className="lg:!w-[150%] lg:!h-[150%] !w-[100%] !h-[100%] object-contain absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 mix-blend-lighten"
             />
             {/* <Image
               src={'/static/images/landing/usdx.png'}
@@ -37,7 +37,7 @@ const RightColumn = () => {
             </h3>
             <Button
               variant="primary"
-              className="whitespace-nowrap max-w-[90%]"
+              className="whitespace-nowrap max-w-[90%] ![clip-path:polygon(0%_22%,_8%_0%,_100%_0%,_100%_78%,_92%_100%,_0%_100%)]"
               onClick={() => setOpenModal(true)}
             >
               JOIN THE WAITLIST

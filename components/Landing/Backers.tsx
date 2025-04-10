@@ -10,6 +10,12 @@ const Backers = () => {
       scrollRef.current.scrollBy({ left: 160, behavior: 'smooth' });
     }
   };
+  const handleRighttryotra = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 160, behavior: 'smooth' });
+    }
+    console.log('first');
+  };
 
   const handleLeft = () => {
     if (scrollRef.current) {
