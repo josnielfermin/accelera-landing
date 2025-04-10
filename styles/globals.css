@@ -51,7 +51,7 @@ body {
   transition: all 0.3s ease;
 } */
 .button-primary {
-  @apply relative flex items-center justify-center w-[160px] h-[30px] text-sm max-lg:text-xs font-semibold bg-none transition rounded-none focus:outline-none text-black overflow-hidden [clip-path:polygon(0%_20%,_10%_0%,_100%_0%,_100%_80%,_90%_100%,_0%_100%)] border-[10px] border-pastel-green-400 hover:text-white z-[2];
+  @apply relative flex items-center justify-center min-w-[160px] min-h-[40px] py-[5px] px-4 text-sm max-lg:text-xs font-semibold bg-none transition rounded-none focus:outline-none text-black overflow-hidden [clip-path:polygon(0%_20%,_10%_0%,_100%_0%,_100%_80%,_90%_100%,_0%_100%)] border-[2px] border-pastel-green-400 hover:text-pastel-green-400 z-[2];
   transition: all 0.3s ease;
 }
 

@@ -30,7 +30,7 @@ const Header = () => {
   const pathname = usePathname();
   return (
     <header className="w-full px-4 md:px-8 lg:px-16 relative h-full overflow-hidden">
-      <div className="w-[120%] absolute bottom-0 left-[-10%] h-[1.5px] bg-white/50 bg-blend-overlay z-[-9]"></div>
+      <div className="w-[120%] absolute bottom-0 left-[-10%] lg:h-[1.5px] h-[1px] bg-white lg:opacity-50 bg-blend-overlay lg:z-[-9]"></div>
       <div
         className="flex items-center justify-between max-lg:justify-center h-full container max-lg:h-[72px]"
         ref={ref}
@@ -98,13 +98,13 @@ const Header = () => {
             alt="Accelera Logo"
             width={158}
             height={47}
-            className="max-xl:w-[111px] max-xl:h-[32px]"
+            className="max-xl:w-[111px] max-xl:h-[32px] relative z-[3]"
             quality={100}
           />
           <div className="w-[1px] absolute -top-10 right-0 h-[400%] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
         </Link>
 
-        <nav className="items-center space-x-8 text-white my-6 max-lg:hidden">
+        <nav className="items-center space-x-8 text-white my-6 max-lg:hidden relative z-[3]">
           {menuLinksLanding.map((link) => (
             <NavItem
               key={link.name}

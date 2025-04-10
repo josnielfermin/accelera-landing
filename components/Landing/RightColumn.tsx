@@ -71,7 +71,7 @@ const RightColumn = () => {
         <Backers />
       </div>
 
-      <div className="w-[1px] absolute bottom-0 right-0 2xl:h-[686px] h-[608px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
+      <div className="w-[1px] absolute bottom-0 right-0 2xl:h-[746px] h-[668px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
       <div className="w-[1px] absolute bottom-0 left-0 h-full bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
       <div className="w-full absolute bottom-0 left-0 h-[1px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
       <div className="absolute -top-2.5 -left-2.5 bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>
