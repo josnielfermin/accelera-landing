@@ -19,6 +19,7 @@ const Common = () => {
         width={126}
         height={36}
         className=""
+        quality={100}
       />
       <div className="text-white text-[32px] leading-normal font-normal text-center mt-8 ">
         Be the first to know about{' '}

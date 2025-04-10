@@ -99,6 +99,7 @@ const Header = () => {
             width={158}
             height={47}
             className=""
+            quality={100}
           />
           <div className="w-[1px] absolute -top-10 right-0 h-[400%] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
         </Link>
