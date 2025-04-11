@@ -37,7 +37,7 @@ const RightColumn = () => {
             </h3>
             <Button
               variant="primary"
-              className="whitespace-nowrap max-w-[90%] ![clip-path:polygon(0%_22%,_8%_0%,_100%_0%,_100%_78%,_92%_100%,_0%_100%)]"
+              className="whitespace-nowrap max-w-[90%]"
               onClick={() => setOpenModal(true)}
             >
               JOIN THE WAITLIST

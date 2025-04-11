@@ -5,7 +5,7 @@ import Backers from '@/components/Landing/Backers';
 const LeftColumn = () => {
   return (
     <div className="flex flex-col justify-between h-full max-[1865px]:ml-[72px] max-lg:ml-0">
-      <div className="text-lg 2xl:text-xl max-lg:text-sm max-sm:text-xs text-white max-w-2xl relative leading-[1.1] lg:ml-5">
+      <div className="text-base 2xl:text-lg max-lg:text-sm max-sm:text-xs text-white max-w-2xl relative leading-[1.1] lg:ml-5">
         Accelera is a next-generation CDP protocol on Converge, offering
         borrowers superior strategy composability with user-set interest rates,
         instant liquidity, efficient leverage, and native stablecoin yields.
@@ -26,10 +26,10 @@ const LeftColumn = () => {
       <div className="flex flex-col items-start">
         <div className="mt-8 max-lg:mt-[250px] max-[280px]:mt-[290px] flex items-center gap-10 max-[1240px]:gap-2 max-[1240px]:flex-col max-[1240px]:items-start">
           <div className="lg:space-y-2 text-white">
-            <h2 className="text-3xl 2xl:text-6xl font-normal leading-none">
+            <h2 className="text-2xl 2xl:text-4xl font-normal leading-none">
               542,897
             </h2>
-            <p className="text-3xl 2xl:text-6xl font-bold leading-none">
+            <p className="text-2xl 2xl:text-4xl font-bold leading-none">
               Users
             </p>
           </div>

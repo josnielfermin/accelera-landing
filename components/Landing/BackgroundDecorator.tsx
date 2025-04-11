@@ -49,9 +49,9 @@ const BackgroundDecorator = () => {
         <Image
           src={'/static/images/landing/decorator-2.png'}
           alt=""
-          width={272}
-          height={882}
-          className="absolute bottom-0 right-[240px] -z-[7] max-lg:hidden"
+          width={400}
+          height={1298}
+          className="absolute -bottom-20 right-10 opacity-75 -z-[7] max-lg:hidden"
           quality={100}
         />
         <Image
@@ -63,7 +63,7 @@ const BackgroundDecorator = () => {
           quality={100}
         />
       </div>
-      <div className="bg-woodsmoke-950/60 w-full h-full absolute top-0 left-0 z-[-8]"></div>
+      <div className="bg-woodsmoke-950/80 w-full h-full absolute top-0 left-0 z-[-8]"></div>
       <div className="absolute h-[410px] w-full top-0 overflow-hidden">
         <div className="w-[410px] h-[410px] rounded-full [background:radial-gradient(50%_50%_at_50%_50%,_#000_0%,_rgba(0,_0,_0,_0.00)_100%)] absolute left-1/2 -translate-x-1/2 top-[-200px] lg:hidden z-[-4]"></div>
       </div>
