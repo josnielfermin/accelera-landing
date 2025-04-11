@@ -36,26 +36,32 @@ export const USERS = [
   {
     id: 1,
     image: '/static/images/landing/user-1.png',
+    imageHover: '/static/images/landing/user-1-hover.png',
   },
   {
     id: 2,
     image: '/static/images/landing/user-2.png',
+    imageHover: '/static/images/landing/user-2-hover.png',
   },
   {
     id: 3,
     image: '/static/images/landing/user-3.png',
+    imageHover: '/static/images/landing/user-3-hover.png',
   },
   {
     id: 4,
     image: '/static/images/landing/user-4.png',
+    imageHover: '/static/images/landing/user-4-hover.png',
   },
   {
     id: 5,
     image: '/static/images/landing/user-5.png',
+    imageHover: '/static/images/landing/user-5-hover.png',
   },
   {
     id: 6,
     image: '/static/images/landing/user-6.png',
+    imageHover: '/static/images/landing/user-6-hover.png',
   },
 ];
 

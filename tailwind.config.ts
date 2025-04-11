@@ -58,6 +58,22 @@ const config: Config = {
           '80%': { transform: 'translateY(-10px)', opacity: '1' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
+        horizontalLight: {
+          '0%': {
+            transform: 'translateX(-100%)',
+          },
+          '100%': {
+            transform: 'translateX(0)',
+          },
+        },
+        verticalLight: {
+          '0%': {
+            transform: 'translateY(-100%)',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+          },
+        },
       },
       animation: {
         'spin-slow': 'spin 25s linear infinite',
@@ -68,6 +84,8 @@ const config: Config = {
         'show-reverse': 'show 300ms linear reverse',
         'slide-up-out': 'slide-up-out 0.5s ease forwards',
         'slide-up-in': 'slide-up-in 0.5s ease forwards',
+        'horizontal-light': 'horizontalLight 2s ease infinite alternate',
+        'vertical-light': 'verticalLight 2s ease infinite alternate',
       },
       lineHeight: {
         normal: 'normal',

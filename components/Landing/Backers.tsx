@@ -43,7 +43,9 @@ const Backers = () => {
 
   return (
     <div className="relative mt-8 flex flex-col max-lg:items-center max-lg:mx-auto gap-3 2xl:max-w-[600px] max-w-[500px]">
-      <div className="w-[200%] absolute top-0 right-0 h-[1px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
+      <div className="w-[200%] absolute top-0 right-0 h-[1px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden overflow-hidden">
+        <div className="w-[70%] h-40 rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.43)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-1/2 -translate-x-1/2 animate-horizontal-light z-[100] bg-blend-overlay"></div>
+      </div>
       <div className="w-[1px] absolute top-0 right-0 h-[600px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
       <div className="absolute -top-2.5 -left-[58px] bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>
       <div className="absolute -bottom-14 -right-2.5 bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>

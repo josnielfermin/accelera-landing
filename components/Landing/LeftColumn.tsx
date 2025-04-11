@@ -37,14 +37,21 @@ const LeftColumn = () => {
             {USERS.map((user) => (
               <div
                 key={user.id}
-                className="rounded-full bg-white/10 flex items-center justify-center -ml-4"
+                className="rounded-full bg-white/10 flex items-center justify-center -ml-4 group"
               >
                 <Image
                   src={user.image}
                   alt=""
                   width={50}
                   height={50}
-                  className="rounded-full"
+                  className="rounded-full opacity-100 group-hover:opacity-0 transition-all"
+                />
+                <Image
+                  src={user.imageHover}
+                  alt=""
+                  width={50}
+                  height={50}
+                  className="rounded-full absolute opacity-0 group-hover:opacity-100 transition-all top-0 group-hover:z-[10] group-hover:scale-110"
                 />
               </div>
             ))}

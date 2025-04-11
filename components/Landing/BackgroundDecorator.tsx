@@ -35,7 +35,15 @@ const BackgroundDecorator = () => {
           alt=""
           width={1095}
           height={1384}
-          className="absolute top-0 left-0 -z-[7]"
+          className="absolute top-0 left-0 -z-[7] max-lg:hidden"
+          quality={100}
+        />
+        <Image
+          src={'/static/images/landing/decorator-mobile-1.png'}
+          alt=""
+          width={414}
+          height={524}
+          className="absolute top-0 left-0 -z-[7] lg:hidden"
           quality={100}
         />
         <Image
@@ -43,12 +51,22 @@ const BackgroundDecorator = () => {
           alt=""
           width={272}
           height={882}
-          className="absolute bottom-0 right-[240px] -z-[7]"
+          className="absolute bottom-0 right-[240px] -z-[7] max-lg:hidden"
+          quality={100}
+        />
+        <Image
+          src={'/static/images/landing/decorator-mobile-2.png'}
+          alt=""
+          width={236}
+          height={767}
+          className="absolute bottom-0 left-[0px] -z-[7] lg:hidden"
           quality={100}
         />
       </div>
       <div className="bg-woodsmoke-950/60 w-full h-full absolute top-0 left-0 z-[-8]"></div>
-      <div className="w-[410px] h-[410px] rounded-full [background:radial-gradient(50%_50%_at_50%_50%,_#000_0%,_rgba(0,_0,_0,_0.00)_100%)] absolute left-1/2 -translate-x-1/2 top-[-200px] lg:hidden z-[-1]"></div>
+      <div className="absolute h-[410px] w-full top-0 overflow-hidden">
+        <div className="w-[410px] h-[410px] rounded-full [background:radial-gradient(50%_50%_at_50%_50%,_#000_0%,_rgba(0,_0,_0,_0.00)_100%)] absolute left-1/2 -translate-x-1/2 top-[-200px] lg:hidden z-[-4]"></div>
+      </div>
     </>
   );
 };
