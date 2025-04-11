@@ -24,7 +24,7 @@ const LeftColumn = () => {
       </div>
 
       <div className="flex flex-col items-start">
-        <div className="mt-8 max-lg:mt-[250px] max-[280px]:mt-[290px] flex items-center gap-10 max-[1180px]:gap-2 max-[1180px]:flex-col max-[1180px]:items-start">
+        <div className="mt-8 max-lg:mt-[250px] max-[280px]:mt-[290px] flex items-center gap-10 max-[1240px]:gap-2 max-[1240px]:flex-col max-[1240px]:items-start">
           <div className="lg:space-y-2 text-white">
             <h2 className="text-3xl 2xl:text-6xl font-normal leading-none">
               542,897
@@ -33,7 +33,7 @@ const LeftColumn = () => {
               Users
             </p>
           </div>
-          <div className="flex items-center max-[1180px]:ml-4 relative z-[5]">
+          <div className="flex items-center max-[1240px]:ml-4 relative z-[5]">
             {USERS.map((user) => (
               <div
                 key={user.id}
