@@ -85,7 +85,7 @@ const Header = () => {
             <Button
               href="/app"
               variant="primary"
-              className="max-w-[90%] w-[280px] mx-auto"
+              className="max-w-[90%] w-[180px] mx-auto relative z-[10]"
             >
               Launch App
             </Button>

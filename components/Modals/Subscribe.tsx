@@ -35,7 +35,7 @@ const Common = () => {
       <div className="text-[#666] font-normal text-[10px] leading-normal text-center max-w-[373px] mt-2 relative z-[2]">
         We respect your privacy and will never send you spam.
       </div>
-      <div className="lg:absolute lg:bottom-8 flex items-center justify-center gap-4 relative z-[2]">
+      <div className="lg:absolute lg:bottom-8 flex items-center justify-center gap-4 relative z-[2] max-lg:mt-4">
         {SOCIALS.map(({ href, iconClass }, index) => (
           <a
             key={index}
@@ -149,7 +149,7 @@ const Mobile = ({ openModal, setOpenModal }: SubscribeProps) => {
         <div
           className={`fixed bottom-0 left-1/2 -translate-x-1/2 w-[150vw] z-[9000] h-[150vw] transition-all lg:hidden ${
             isVisible
-              ? 'visible max-lg:translate-y-[78%] max-[890px]:translate-y-[73%] max-[725px]:translate-y-[66%] max-[580px]:translate-y-[60%] max-[490px]:translate-y-[52%] max-[405px]:translate-y-[44%] max-[345px]:translate-y-[34%]'
+              ? 'visible max-lg:translate-y-[72%] max-[890px]:translate-y-[68%] max-[725px]:translate-y-[60%] max-[580px]:translate-y-[54%] max-[490px]:translate-y-[48%] max-[445px]:translate-y-[40%] max-[385px]:translate-y-[34%] max-[345px]:translate-y-[28%] max-[325px]:translate-y-[20%]'
               : '[visibility:hidden] translate-y-[100%]'
           }`}
         >
