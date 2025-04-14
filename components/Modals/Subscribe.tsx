@@ -24,7 +24,7 @@ const Common = () => {
       />
       <div className="text-white text-[32px] max-lg:text-xl leading-normal font-normal text-center lg:mt-28 mt-6 max-w-[373px] max-lg:max-w-[245px] relative z-[2]">
         Be the first to know about{' '}
-        <span className="font-bold">season zero</span>
+        <span className="font-bold">Season Zero</span>
       </div>
       <div className="w-full relative max-w-[373px] max-lg:max-w-[285px] z-[2]">
         <Input />
