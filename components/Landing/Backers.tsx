@@ -1,8 +1,9 @@
 'use client';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState, Fragment } from 'react';
 import Image from 'next/image';
 import { BACKERS } from '@/components/Landing/Data';
 const Backers = () => {
+  const [backers, setBackers] = useState(BACKERS);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const handleRight = () => {
@@ -72,15 +73,33 @@ const Backers = () => {
         className="flex overflow-scroll gap-6 items-center w-full 2xl:max-w-xl max-w-md hide-scroll scroll-smooth mx-auto"
         ref={scrollRef}
       >
-        {BACKERS.map((item, index) => (
-          <Image
-            src={item.image}
-            alt={item.name}
+        {backers.map((item, index) => (
+          <div
             key={index}
-            width={120}
-            height={32}
-            className="h-[32px] w-auto"
-          />
+            className="min-w-[80px] w-auto flex-shrink-0 min-h-[32px] relative"
+          >
+            <Image
+              src={item.image}
+              alt={item.name}
+              width={120}
+              height={32}
+              className={`h-[32px] w-auto ${
+                item.loaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              quality={100}
+              onLoad={() => {
+                backers[index].loaded = true;
+                setBackers([...backers]);
+              }}
+            />
+            <div
+              className={`flex items-center justify-center border border-pastel-green-400 w-[120px] h-[32px] text-white text-sm max-lg:text-xs bg-woodsmoke-950 absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 transition-all ${
+                item.loaded ? 'opacity-0' : 'opacity-100 animate-pulse'
+              }`}
+            >
+              {item.name}
+            </div>
+          </div>
         ))}
       </div>
     </div>

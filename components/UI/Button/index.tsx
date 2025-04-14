@@ -24,10 +24,10 @@ const AnimateFill = ({
     <>
       {variant === 'primary' && (
         <>
-          <div className="w-[50%] absolute left-0 top-0 h-[50%] bg-pastel-green-400 z-[-1] group-hover:-translate-x-[100%] group-hover:-translate-y-[100%] transition-all"></div>
-          <div className="w-[50%] absolute right-0 top-0 h-[50%] bg-pastel-green-400 z-[-1] group-hover:translate-x-[100%] group-hover:-translate-y-[100%] transition-all"></div>
-          <div className="w-[50%] absolute left-0 bottom-0 h-[50%] bg-pastel-green-400 z-[-1] group-hover:-translate-x-[100%] group-hover:translate-y-[100%] transition-all"></div>
-          <div className="w-[50%] absolute right-0 bottom-0 h-[50%] bg-pastel-green-400 z-[-1] transition-all group-hover:translate-x-[100%] group-hover:translate-y-[100%]"></div>
+          <div className="w-[60%] absolute left-0 top-0 h-[60%] bg-pastel-green-400 z-[-1] group-hover:-translate-x-[100%] group-hover:-translate-y-[100%] transition-all"></div>
+          <div className="w-[60%] absolute right-0 top-0 h-[60%] bg-pastel-green-400 z-[-1] group-hover:translate-x-[100%] group-hover:-translate-y-[100%] transition-all"></div>
+          <div className="w-[60%] absolute left-0 bottom-0 h-[60%] bg-pastel-green-400 z-[-1] group-hover:-translate-x-[100%] group-hover:translate-y-[100%] transition-all"></div>
+          <div className="w-[60%] absolute right-0 bottom-0 h-[60%] bg-pastel-green-400 z-[-1] transition-all group-hover:translate-x-[100%] group-hover:translate-y-[100%]"></div>
           <div className="w-5 h-5 absolute -left-[9px] -top-[13px] bg-pastel-green-400 z-[-1] rotate-[50deg]"></div>
           <div className="w-5 h-5 absolute -right-[9px] -bottom-[13px] bg-pastel-green-400 z-[-1] rotate-[50deg]"></div>
         </>

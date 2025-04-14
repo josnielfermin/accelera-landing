@@ -39,9 +39,7 @@ export const MenuMobileLanding = () => {
 
       <div
         className={`py-[22px] px-1.5 rounded-tl-[10px] rounded-bl-[10px] bg-[rgba(74,176,234,0.50)] bg-opacity-50 backdrop-blur-[10px] fixed bottom-0 right-0 w-[416px] max-xs:w-[95%] flex flex-col gap-3 z-[9000] h-[100vh] transition-all ${
-          isVisible
-            ? 'visible translate-x-0'
-            : '[visibility:hidden] translate-x-[100%]'
+          isVisible ? 'visible translate-x-0' : 'invisible translate-x-[100%]'
         }`}
       >
         <div className="flex items-center justify-between px-4 z-[9000]">

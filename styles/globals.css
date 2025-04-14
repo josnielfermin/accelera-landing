@@ -13,7 +13,7 @@
 
 body {
   /* background-image: url('/static/images/background.png'); */
-  background-color: transparent;
+  background-color: #151515;
   overflow-x: hidden;
   @apply text-base;
   scroll-behavior: smooth;

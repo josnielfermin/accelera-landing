@@ -150,7 +150,7 @@ const Mobile = ({ openModal, setOpenModal }: SubscribeProps) => {
           className={`fixed bottom-0 left-1/2 -translate-x-1/2 w-[150vw] z-[9000] h-[150vw] transition-all lg:hidden ${
             isVisible
               ? 'visible max-lg:translate-y-[72%] max-[890px]:translate-y-[68%] max-[725px]:translate-y-[60%] max-[580px]:translate-y-[54%] max-[490px]:translate-y-[48%] max-[445px]:translate-y-[40%] max-[385px]:translate-y-[34%] max-[345px]:translate-y-[28%] max-[325px]:translate-y-[20%]'
-              : '[visibility:hidden] translate-y-[100%]'
+              : 'invisible translate-y-[100%]'
           }`}
         >
           <div

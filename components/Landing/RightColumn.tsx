@@ -11,25 +11,18 @@ import Subscribe from '@/components/Modals/Subscribe';
 const RightColumn = () => {
   const [openModal, setOpenModal] = useState(false);
   return (
-    <div className="relative flex max-lg:flex-col max-lg:items-center justify-center max-[1865px]:mr-[72px] max-lg:mx-auto max-lg:w-full max-lg">
+    <div className="relative flex max-lg:flex-col max-lg:items-center justify-center max-[1865px]:mr-[72px] max-lg:mx-auto max-lg:w-full lg:max-w-[350px]">
       <div className="absolute w-full max-lg:hidden">
         <SocialSidebar />
       </div>
-      <div className="bg-transparent rounded-none flex flex-col max-lg:flex-row max-md:flex-col w-full items-center">
+      <div className="bg-transparent rounded-none flex flex-col max-lg:flex-row max-md:flex-col w-full items-center lg:max-w-[350px]">
         {/* <Coin /> */}
         <div className="flex lg:flex-col max-[380px]:flex-col w-full items-center">
-          <div className="relative w-full max-w-md h-[280px] max-2xl:h-[190px] mx-auto flex items-center justify-center overflow-hidden z-[6]">
+          <div className="relative w-full max-w-md h-[280px] min-w-[343px] max-2xl:h-[190px] mx-auto flex items-center justify-center overflow-hidden z-[6]">
             <SplineViewer
               url="https://prod.spline.design/TWI18UldhK6eBwx1/scene.splinecode"
-              className="lg:!w-[150%] lg:!h-[150%] !w-[100%] !h-[100%] object-contain absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 mix-blend-lighten"
+              className="lg:!w-[150%] lg:!h-[150%] !w-[100%] !h-[100%] object-contain absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 mix-blend-lighten max-w-[350px]"
             />
-            {/* <Image
-              src={'/static/images/landing/usdx.png'}
-              alt="usdx"
-              width={329}
-              height={329}
-              className="mix-blend-lighten z-[10] max-2xl:min-w-[200px] max-2xl:min-h-[200px] max-2xl:w-[200px] max-2xl:h-[200px]"
-            /> */}
           </div>
           <div className="flex flex-col w-full items-center max-lg:-ml-8 max-[380px]:ml-auto">
             <h3 className="text-4xl max-lg:text-2xl font-normal lg:mb-4 text-white text-center">

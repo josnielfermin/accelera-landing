@@ -1,18 +1,36 @@
+'use client';
 import Image from 'next/image';
+import { useState } from 'react';
 
 const BackgroundDecorator = () => {
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   return (
     <>
       <video
-        className="h-full w-full object-cover absolute top-0 left-0 z-[-10]"
+        className={`h-full w-full object-cover absolute top-0 left-0 z-[-10] transition-all ${
+          isVideoLoaded ? 'opacity-100' : 'opacity-0'
+        }`}
         style={{ mixBlendMode: 'lighten' }}
         autoPlay
         loop
         muted
         playsInline
+        onCanPlay={() => {
+          setIsVideoLoaded(true);
+        }}
       >
         <source src={'/static/videos/fluid.mp4'} type="video/mp4"></source>
       </video>
+      <Image
+        src="/static/images/background-fluid.png"
+        width={2195}
+        height={1235}
+        alt=""
+        priority={true}
+        className={`h-full w-full object-cover absolute top-0 left-0 z-[-10] transition-all ${
+          isVideoLoaded ? 'opacity-0' : 'opacity-100'
+        }`}
+      />
       <Image
         src={'/static/images/background-decorator.png'}
         alt=""
@@ -20,6 +38,7 @@ const BackgroundDecorator = () => {
         height={1956}
         className="absolute top-0 left-0 -z-[9] object-cover w-full h-full mix-blend-overlay"
         quality={100}
+        priority={true}
       />
       <Image
         src={'/static/images/background-decorator2.png'}
@@ -27,6 +46,7 @@ const BackgroundDecorator = () => {
         width={2360}
         height={1916}
         quality={100}
+        priority={true}
         className="absolute top-0 left-0 -z-[6] object-cover w-full h-full mix-blend-multiply"
       />
       <div className="w-full h-full absolute top-0 left-0 overflow-hidden">
@@ -49,9 +69,9 @@ const BackgroundDecorator = () => {
         <Image
           src={'/static/images/landing/decorator-2.png'}
           alt=""
-          width={400}
-          height={1298}
-          className="absolute -bottom-20 right-10 opacity-75 -z-[7] max-lg:hidden"
+          width={583}
+          height={1892}
+          className="absolute -bottom-60 -right-16 opacity-75 -z-[7] max-lg:hidden"
           quality={100}
         />
         <Image

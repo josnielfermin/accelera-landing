@@ -30,7 +30,7 @@ const Header = () => {
   const pathname = usePathname();
   return (
     <header className="w-full px-4 md:px-8 lg:px-16 relative overflow-hidden h-[80px]">
-      <div className="w-[120%] absolute bottom-0 left-[-10%] lg:h-[1.5px] h-[1px] bg-white lg:bg-opacity-50 bg-blend-overlay lg:z-[-9]">
+      <div className="w-[120%] absolute bottom-0 left-[-10%] lg:h-[1.5px] h-[1px] bg-white lg:bg-opacity-50 bg-blend-overlay lg:z-[-8]">
         <div className="w-[70%] h-40 rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.43)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-1/2 -translate-x-1/2 animate-horizontal-light z-[100] bg-blend-overlay"></div>
       </div>
       <div
@@ -47,7 +47,7 @@ const Header = () => {
           className={`fixed bottom-0 left-1/2 -translate-x-1/2 w-[150vw] z-[9000] h-[150vw] transition-all lg:hidden ${
             isVisible
               ? 'visible max-lg:translate-y-[78%] max-[890px]:translate-y-[73%] max-[725px]:translate-y-[66%] max-[580px]:translate-y-[60%] max-[490px]:translate-y-[52%] max-[405px]:translate-y-[44%] max-[345px]:translate-y-[34%]'
-              : '[visibility:hidden] translate-y-[100%]'
+              : 'invisible translate-y-[100%]'
           }`}
         >
           {/* <div
@@ -63,7 +63,7 @@ const Header = () => {
             className={`rounded-full w-[150vw] h-[150vw] flex flex-col gap-3 [box-shadow:2px_0px_101.9px_0px_rgba(92,_222,_102,_0.90)] absolute top-0 left-1/2 -translate-x-1/2 bottom-0 z-10`}
           ></div>
           <div
-            className={`py-[22px] px-1.5 rounded-full bg-woodsmoke-950 w-[150vw] h-[150vw] flex flex-col gap-3 overflow-hidden relative`}
+            className={`py-[22px] px-1.5 rounded-full bg-woodsmoke-950 w-[150vw] h-[150vw] flex flex-col gap-3 overflow-hidden relative z-50`}
           >
             <Image
               src={'/static/images/header/decorator.png'}
@@ -85,7 +85,7 @@ const Header = () => {
             <Button
               href="/app"
               variant="primary"
-              className="max-w-[90%] w-[180px] mx-auto relative z-[10]"
+              className="max-w-[90%] !w-[180px] mx-auto relative z-[10]"
             >
               Launch App
             </Button>
@@ -103,7 +103,7 @@ const Header = () => {
             className="max-xl:w-[111px] max-xl:h-[32px] relative z-[3]"
             quality={100}
           />
-          <div className="w-[1px] absolute -top-10 right-0 h-[400%] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
+          <div className="w-[1px] absolute -top-10 right-0 h-[400%] bg-white/50 bg-blend-overlay z-[-8] max-lg:hidden"></div>
         </Link>
 
         <nav className="items-center space-x-8 text-white my-6 max-lg:hidden relative z-[3]">
