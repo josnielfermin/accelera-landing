@@ -148,7 +148,7 @@ const config: Config = {
         xs: '530px',
         xxs: '415px',
         xl1: '1400px',
-        xl2: '1580px',
+        xl2: '1740px',
       },
     },
     container: {

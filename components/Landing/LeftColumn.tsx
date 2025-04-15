@@ -9,7 +9,7 @@ const LeftColumn = () => {
   const [users, setUsers] = useState(USERS);
   return (
     <div className="flex flex-col justify-between h-full max-[1865px]:ml-[72px] max-lg:ml-0">
-      <div className="text-base 2xl:text-lg max-lg:text-sm max-sm:text-xs text-white max-w-2xl relative leading-[1.1] lg:ml-5">
+      <div className="text-base xl2:text-lg max-lg:text-sm max-sm:text-xs text-white max-w-2xl relative !leading-[1.3] lg:ml-5">
         Accelera is a next-generation CDP protocol on Converge, offering
         borrowers superior strategy composability with user-set interest rates,
         instant liquidity, efficient leverage, and native stablecoin yields.
@@ -32,11 +32,11 @@ const LeftColumn = () => {
 
       <div className="flex flex-col items-start">
         <div className="mt-8 max-lg:mt-[250px] max-[280px]:mt-[290px] flex items-center gap-10 max-[1240px]:gap-2 max-[1240px]:flex-col max-[1240px]:items-start">
-          <div className="lg:space-y-2 text-white">
-            <h2 className="text-2xl 2xl:text-4xl font-normal leading-none">
+          <div className="xl2:space-y-2 text-white">
+            <h2 className="text-2xl lg:text-3xl xl2:text-4xl font-normal !leading-none">
               542,897
             </h2>
-            <p className="text-2xl 2xl:text-4xl font-bold leading-none">
+            <p className="text-2xl lg:text-3xl xl2:text-4xl font-bold !leading-none">
               Users
             </p>
           </div>
@@ -44,7 +44,7 @@ const LeftColumn = () => {
             {users.map((user, index) => (
               <div
                 key={user.id}
-                className={`rounded-full bg-white/10 flex items-center justify-center -ml-4 group w-[50px] h-[50px] ${
+                className={`rounded-full bg-white/10 flex items-center justify-center -ml-4 max-xl2:-ml-2.5 group w-[50px] h-[50px] max-xl2:w-[40px] max-xl2:h-[40px] select-none ${
                   !user.imageLoaded && !user.imageHoverLoaded && 'animate-pulse'
                 }`}
               >
@@ -53,7 +53,7 @@ const LeftColumn = () => {
                   alt=""
                   width={50}
                   height={50}
-                  className={`rounded-full opacity-100 group-hover:!opacity-0 transition-all ${
+                  className={`rounded-full max-xl2:w-[40px] max-xl2:h-[40px] opacity-100 group-hover:!opacity-0 transition-all ${
                     user.imageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
                   onLoad={() => {
@@ -66,7 +66,7 @@ const LeftColumn = () => {
                   alt=""
                   width={50}
                   height={50}
-                  className={`rounded-full absolute opacity-0 group-hover:!opacity-100 transition-all top-0 group-hover:z-[10] group-hover:scale-110 ${
+                  className={`rounded-full absolute max-xl2:w-[40px] max-xl2:h-[40px] opacity-0 group-hover:!opacity-100 transition-all top-0 group-hover:z-[10] group-hover:scale-110 ${
                     !user.imageLoaded && '[visibility:hidden]'
                   }`}
                   onLoad={() => {

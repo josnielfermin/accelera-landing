@@ -2,9 +2,11 @@
 import { useRef, useEffect, useState, Fragment } from 'react';
 import Image from 'next/image';
 import { BACKERS } from '@/components/Landing/Data';
+import useMediaQuery from '@/hooks/useMediaQuery';
 const Backers = () => {
   const [backers, setBackers] = useState(BACKERS);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const isDesktopLarge = useMediaQuery('(min-width: 1740px)');
 
   const handleRight = () => {
     if (scrollRef.current) {
@@ -43,7 +45,7 @@ const Backers = () => {
   }, []);
 
   return (
-    <div className="relative mt-8 flex flex-col max-lg:items-center max-lg:mx-auto gap-3 2xl:max-w-[600px] max-w-[500px]">
+    <div className="relative mt-8 flex flex-col max-lg:items-center max-lg:mx-auto gap-3 xl2:max-w-[600px] max-w-[500px]">
       <div className="w-[200%] absolute top-0 right-0 h-[1px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden overflow-hidden">
         <div className="w-[70%] h-40 rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.43)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-1/2 -translate-x-1/2 animate-horizontal-light z-[100] bg-blend-overlay"></div>
       </div>
@@ -51,41 +53,39 @@ const Backers = () => {
       <div className="absolute -top-2.5 -left-[58px] bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>
       <div className="absolute -bottom-14 -right-2.5 bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>
       <div className="flex items-center justify-between w-full">
-        <p className="text-xl font-normal text-white">
+        <p className="xl2:text-xl text-lg font-normal text-white">
           Backed by <span className="font-bold">The Best</span>
         </p>
         <div className="flex items-center cursor-pointer relative z-10">
           <div
-            className="flex items-center justify-center py-1 2xl:px-9 px-7 border hover:border-woodsmoke-950 transition-all group hover:bg-pastel-green-400"
+            className="flex items-center justify-center py-1 xl2:px-9 px-7 border hover:border-woodsmoke-950 transition-all group hover:bg-pastel-green-400"
             onClick={handleLeft}
           >
-            <div className="icon-arrow-left 2xl:text-2xl text-xl text-white group-hover:text-black"></div>
+            <div className="icon-arrow-left xl2:text-2xl text-xl text-white group-hover:text-black"></div>
           </div>
           <div
-            className="flex items-center justify-center py-1 2xl:px-9 px-7 border hover:border-woodsmoke-950 transition-all group hover:bg-pastel-green-400"
+            className="flex items-center justify-center py-1 xl2:px-9 px-7 border hover:border-woodsmoke-950 transition-all group hover:bg-pastel-green-400"
             onClick={handleRight}
           >
-            <div className="icon-arrow-right 2xl:text-2xl text-xl text-white group-hover:text-black"></div>
+            <div className="icon-arrow-right xl2:text-2xl text-xl text-white group-hover:text-black"></div>
           </div>
         </div>
       </div>
       <div
-        className="flex overflow-scroll gap-6 items-center w-full 2xl:max-w-xl max-w-md hide-scroll scroll-smooth mx-auto"
+        className="flex overflow-scroll gap-6 items-center w-full xl2:max-w-xl max-w-md hide-scroll scroll-smooth mx-auto"
         ref={scrollRef}
       >
         {backers.map((item, index) => (
           <div
             key={index}
-            className="min-w-[80px] w-auto flex-shrink-0 min-h-[32px] relative"
+            className="min-w-[86px] w-auto flex-shrink-0 min-h-[32px] relative select-none"
           >
             <Image
               src={item.image}
               alt={item.name}
-              width={120}
-              height={32}
-              className={`h-[32px] w-auto ${
-                item.loaded ? 'opacity-100' : 'opacity-0'
-              }`}
+              width={isDesktopLarge ? item.width : item.width * 0.8}
+              height={isDesktopLarge ? item.height : item.height * 0.8}
+              className={`${item.loaded ? 'opacity-100' : 'opacity-0'}`}
               quality={100}
               onLoad={() => {
                 backers[index].loaded = true;

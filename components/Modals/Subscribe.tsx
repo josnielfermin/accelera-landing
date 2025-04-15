@@ -21,6 +21,7 @@ const Common = () => {
         height={36}
         className="relative z-[2]"
         quality={100}
+        priority={true}
       />
       <div className="text-white text-[32px] max-lg:text-xl leading-normal font-normal text-center lg:mt-28 mt-6 max-w-[373px] max-lg:max-w-[245px] relative z-[2]">
         Be the first to know about{' '}
