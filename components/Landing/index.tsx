@@ -6,7 +6,7 @@ import BackgroundDecorator from '@/components/Landing/BackgroundDecorator';
 
 const Landing = () => {
   return (
-    <main className="w-full h-full [zoom:0.9]">
+    <main className="w-full h-full ">
       <BackgroundDecorator />
 
       <section className="relative w-full lg:min-h-[calc(100vh-148px)] max-lg:h-[900px] max-md:h-[1020px] max-[380px]:h-[1130px] max-[280px]:h-[1220px] flex flex-col max-lg:items-center lg:pl-12 container ">

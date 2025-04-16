@@ -29,7 +29,7 @@ const Header = () => {
   const { ref, isVisible, setIsVisible } = ComponentVisible(false);
   const pathname = usePathname();
   return (
-    <header className="w-full px-4 md:px-8 lg:px-16 relative overflow-hidden h-[80px] [zoom:0.9]">
+    <header className="w-full px-4 md:px-8 lg:px-16 relative overflow-hidden h-[80px]">
       <div className="w-[120%] absolute bottom-0 left-[-10%] lg:h-[1.5px] h-[1px] bg-white lg:bg-opacity-50 bg-blend-overlay lg:z-[-8]">
         <div className="w-[70%] h-40 rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.43)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-1/2 -translate-x-1/2 animate-horizontal-light z-[100] bg-blend-overlay"></div>
       </div>
