@@ -27,9 +27,9 @@ const Common = () => {
         Be the first to know about{' '}
         <span className="font-bold">Season Zero</span>
       </div>
-      <div className="w-full relative max-w-[373px] max-lg:max-w-[285px] z-[2]">
+      <div className="w-full flex items-center relative max-w-[373px] max-lg:max-w-[285px] z-[2] bg-[#1D1D1D] gap-2 pr-2">
         <Input />
-        <div className="text-[#f0f0f0] cursor-pointer text-xs font-normal py-2 px-5 bg-[#454545] absolute right-3 top-1/2 -translate-y-1/2">
+        <div className="text-[#f0f0f0] cursor-pointer text-xs font-normal py-2 px-5 bg-[#454545]">
           Subscribe
         </div>
       </div>
