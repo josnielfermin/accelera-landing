@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type SplineViewerProps = {
   url: string;
@@ -9,12 +9,15 @@ type SplineViewerProps = {
 
 export default function SplineViewer({ url, className }: SplineViewerProps) {
   const [scriptLoaded, setScriptLoaded] = useState(false);
+  const viewerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let script: HTMLScriptElement | null = null;
+
     const existingScript = document.querySelector('#spline-script');
 
     if (!existingScript) {
-      const script = document.createElement('script');
+      script = document.createElement('script');
       script.type = 'module';
       script.src =
         'https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js';
@@ -24,15 +27,27 @@ export default function SplineViewer({ url, className }: SplineViewerProps) {
     } else {
       setScriptLoaded(true);
     }
+
+    return () => {
+      const splineEl = viewerRef.current?.querySelector('spline-viewer');
+      if (splineEl) {
+        splineEl.remove();
+      }
+    };
   }, []);
 
   if (!scriptLoaded) return null;
 
   return (
-    <spline-viewer
-      url={url}
-      class={className}
+    <div
+      ref={viewerRef}
+      className={className}
       style={{ width: '100%', height: '100%' }}
-    ></spline-viewer>
+    >
+      <spline-viewer
+        url={url}
+        style={{ width: '100%', height: '100%' }}
+      ></spline-viewer>
+    </div>
   );
 }

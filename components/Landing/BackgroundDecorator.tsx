@@ -118,7 +118,7 @@ const BackgroundDecorator = () => {
           alt=""
           width={583}
           height={1892}
-          className={`absolute -bottom-60 -right-16 opacity-75 -z-[7] max-lg:hidden select-none transition-all ${
+          className={`absolute -bottom-60 -right-16 opacity-75 -z-[7] max-xs:hidden select-none transition-all ${
             decoratorLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           quality={100}
@@ -131,7 +131,7 @@ const BackgroundDecorator = () => {
           alt=""
           width={236}
           height={767}
-          className={`absolute bottom-0 left-[0px] -z-[7] lg:hidden select-none transition-all ${
+          className={`absolute bottom-0 left-[0px] max-xs:w-full -z-[7] xs:hidden select-none transition-all ${
             decoratorMobileLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           quality={100}
