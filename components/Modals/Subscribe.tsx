@@ -89,9 +89,16 @@ const Desktop = ({ openModal, setOpenModal }: SubscribeProps) => {
             />
             <div className="bg-woodsmoke-950/60 w-full h-full absolute top-0 left-0 z-[-9]"></div>
             <div className="w-full h-full relative overflow-hidden">
-              <SplineViewer
+              {/* <SplineViewer
                 url="https://prod.spline.design/iBUpvAbG1mzf5hIL/scene.splinecode"
                 className="w-full h-full object-contain"
+              /> */}
+              <Image
+                width={478}
+                height={478}
+                src={'/static/images/modals/subscribe/accel.png'}
+                alt=""
+                className="relative top-12"
               />
               <div className="w-full h-[350px] absolute left-0 top-1/2 -translate-y-1/2">
                 <div className="absolute top-[-42px] right-0 w-[50%] h-[62px] border-t-2 border-l-2 border-dashed border-pastel-green-400">
