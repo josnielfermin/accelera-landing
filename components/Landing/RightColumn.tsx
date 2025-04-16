@@ -65,7 +65,7 @@ const RightColumn = () => {
       </div>
 
       <div className="w-[1.5px] absolute bottom-0 right-0 2xl:h-[746px] h-[668px] bg-white bg-opacity-50 bg-blend-overlay z-[-9] max-lg:hidden overflow-hidden">
-        <div className="w-[100vw] h-[100vh] rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.23)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-[-10px] animate-vertical-light z-[1100]"></div>
+        {/* <div className="w-[100vw] h-[100vh] rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.23)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-[-10px] animate-vertical-light z-[1100]"></div> */}
       </div>
       <div className="w-[1px] absolute bottom-0 left-0 h-full bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
       <div className="w-full absolute bottom-0 left-0 h-[1px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
