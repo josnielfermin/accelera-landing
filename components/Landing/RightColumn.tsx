@@ -12,7 +12,7 @@ const RightColumn = () => {
   const [openModal, setOpenModal] = useState(false);
   return (
     <div className="relative flex max-lg:flex-col max-lg:items-center justify-center max-[1865px]:mr-[72px] max-lg:mx-auto max-lg:w-full lg:max-w-[350px]">
-      <div className="absolute w-full max-lg:hidden">
+      <div className="absolute w-full max-lg:hidden z-[5]">
         <SocialSidebar />
       </div>
       <div className="bg-transparent rounded-none flex flex-col max-lg:flex-row max-md:flex-col w-full items-center xl2:max-w-[350px] lg:max-w-[280px]">
@@ -46,13 +46,15 @@ const RightColumn = () => {
 
           <div className="flex flex-col items-center py-3 px-6 max-2xl:px-4 relative">
             <div className="w-[1px] absolute bottom-0 right-[-1.5px] h-full bg-white/50 bg-blend-overlay z-[-9]"></div>
-            <p className="xl2:text-3xl text-2xl font-normal">2,938</p>
-            <p className="xl2:text-lg text-base tracking-[5.4px] font-bold">
+            <p className="xl2:text-3xl text-2xl font-normal z-[5] relative">
+              2,938
+            </p>
+            <p className="xl2:text-lg text-base tracking-[5.4px] font-bold z-[5] relative">
               HOLDERS
             </p>
           </div>
 
-          <div className="flex flex-col items-center py-3 px-6 max-2xl:px-4">
+          <div className="flex flex-col items-center py-3 px-6 max-2xl:px-4 relative z-[5]">
             <p className="xl2:text-3xl text-2xl font-normal">$5.96B</p>
             <p className="xl2:text-lg text-base tracking-[5.4px] font-bold">
               TVL
@@ -69,8 +71,8 @@ const RightColumn = () => {
       </div>
       <div className="w-[1px] absolute bottom-0 left-0 h-full bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
       <div className="w-full absolute bottom-0 left-0 h-[1px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
-      <div className="absolute -top-2.5 -left-2.5 bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>
-      <div className="absolute -bottom-2.5 -right-2.5 bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>
+      <div className="absolute -top-2.5 -left-2.5 bg-[#D9D9D9] w-5 h-5 max-lg:hidden z-[5]"></div>
+      <div className="absolute -bottom-2.5 -right-2.5 bg-[#D9D9D9] w-5 h-5 max-lg:hidden z-[5]"></div>
       <Subscribe openModal={openModal} setOpenModal={setOpenModal} />
     </div>
   );

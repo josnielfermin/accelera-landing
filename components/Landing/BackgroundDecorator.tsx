@@ -63,7 +63,7 @@ const BackgroundDecorator = () => {
         alt=""
         width={1565}
         height={1956}
-        className={`absolute top-0 left-0 -z-[9] object-cover w-full h-full mix-blend-overlay select-none transition-all ${
+        className={`absolute top-0 left-0 object-cover w-full h-full mix-blend-overlay select-none transition-all ${
           backgroundDecoratorLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         quality={100}
@@ -79,7 +79,7 @@ const BackgroundDecorator = () => {
         height={1080}
         quality={100}
         priority={true}
-        className={`absolute top-0 left-0 -z-[6] object-cover w-full h-full mix-blend-multiply select-none transition-all ${
+        className={`absolute top-0 left-0 z-[1] object-cover w-full h-full mix-blend-multiply select-none transition-all ${
           backgroundDecoratorLoaded ? 'opacity-80' : 'opacity-0'
         }`}
         onLoad={() => {
@@ -92,7 +92,7 @@ const BackgroundDecorator = () => {
           alt=""
           width={742}
           height={1638}
-          className={`absolute top-0 left-0 -z-[7] max-lg:hidden select-none transition-all ${
+          className={`absolute top-0 left-0 max-lg:hidden select-none transition-all ${
             decoratorLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           quality={100}
@@ -118,7 +118,7 @@ const BackgroundDecorator = () => {
           alt=""
           width={430}
           height={1492}
-          className={`absolute bottom-0 right-0 -z-[7] max-xs:hidden select-none transition-all ${
+          className={`absolute bottom-0 right-0 max-xs:hidden select-none transition-all ${
             decoratorLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           quality={100}
