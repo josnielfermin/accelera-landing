@@ -18,7 +18,7 @@ const RightColumn = () => {
       <div className="bg-transparent rounded-none flex flex-col max-lg:flex-row max-md:flex-col w-full items-center xl2:max-w-[350px] lg:max-w-[280px]">
         {/* <Coin /> */}
         <div className="flex lg:flex-col max-[380px]:flex-col w-full items-center">
-          <div className="relative w-full max-w-md xl2:h-[280px] h-[200px] max-2xl:h-[190px] mx-auto flex items-center justify-center overflow-hidden z-[6]">
+          <div className="relative w-full max-w-md xl2:h-[280px] h-[200px] max-2xl:h-[190px] mx-auto flex items-center justify-center overflow-hidden">
             {/* <SplineViewer
               url="https://prod.spline.design/TWI18UldhK6eBwx1/scene.splinecode"
               className="lg:!w-[150%] lg:!h-[150%] !w-[100%] !h-[100%] object-contain absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 mix-blend-lighten max-w-[350px]"
