@@ -60,7 +60,7 @@ const Desktop = ({ openModal, setOpenModal }: SubscribeProps) => {
       <div className="flex items-end h-full relative">
         <div className="flex items-center xl:w-[1066px] w-full max-w-[90%] justify-center mx-auto">
           <div className="flex flex-col items-center justify-center w-[556px] h-[605px] relative">
-            <video
+            {/* <video
               className="h-full w-full object-cover absolute top-0 left-0 z-[-10]"
               style={{ mixBlendMode: 'lighten' }}
               autoPlay
@@ -72,22 +72,38 @@ const Desktop = ({ openModal, setOpenModal }: SubscribeProps) => {
                 src={'/static/videos/fluid.mp4'}
                 type="video/mp4"
               ></source>
-            </video>
+            </video> */}
             <Image
-              src={'/static/images/modals/subscribe/decorator.png'}
+              src={'/static/images/background-decorator.webp'}
               alt=""
               width={1565}
               height={1956}
-              className="absolute top-0 left-0 z-[-8] object-cover w-full h-full mix-blend-overlay"
+              className="absolute top-0 left-0 object-cover w-full h-full mix-blend-overlay"
             />
             <Image
               src={'/static/images/background-decorator2.png'}
               alt=""
               width={2360}
               height={1916}
-              className="absolute top-0 left-0 z-[-6] object-cover w-full h-full mix-blend-multiply"
+              className="absolute top-0 left-0 object-cover w-full h-full mix-blend-multiply"
             />
-            <div className="bg-woodsmoke-950/60 w-full h-full absolute top-0 left-0 z-[-9]"></div>
+            <Image
+              src={'/static/images/landing/decorator-1-minimalist.png'}
+              alt=""
+              width={742}
+              height={1638}
+              className={`absolute top-0 left-0 z-[1] max-lg:hidden select-none transition-all`}
+              quality={100}
+            />
+            <Image
+              src={'/static/images/landing/decorator-2-minimalist.png'}
+              alt=""
+              width={430}
+              height={1492}
+              className={`absolute bottom-0 right-0 z-[1] max-xs:hidden select-none`}
+              quality={100}
+            />
+            {/* <div className="bg-wosodsmoke-950/60 w-full h-full absolute top-0 left-0 z-[-2]"></div> */}
             <div className="w-full h-full relative overflow-hidden">
               <SplineViewer
                 url="https://prod.spline.design/iBUpvAbG1mzf5hIL/scene.splinecode"
