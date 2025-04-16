@@ -69,8 +69,8 @@ const RightColumn = () => {
       </div>
       <div className="w-[1px] absolute bottom-0 left-0 h-full bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
       <div className="w-full absolute bottom-0 left-0 h-[1px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
-      <div className="absolute -top-2.5 -left-2.5 bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>
-      <div className="absolute -bottom-2.5 -right-2.5 bg-[#D9D9D9] w-5 h-5 max-lg:hidden"></div>
+      <div className="absolute -top-2 -left-2 bg-[#D9D9D9] w-4 h-4 max-lg:hidden"></div>
+      <div className="absolute -bottom-2 -right-2 bg-[#D9D9D9] w-4 h-4 max-lg:hidden"></div>
       <Subscribe openModal={openModal} setOpenModal={setOpenModal} />
     </div>
   );

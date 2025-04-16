@@ -13,7 +13,7 @@ const LeftColumn = () => {
         Accelera is a next-generation CDP protocol on Converge, offering
         borrowers superior strategy composability with user-set interest rates,
         instant liquidity, efficient leverage, and native stablecoin yields.
-        <div className="border-[#D9D9D9] border backdrop-blur-[2px] bg-[#D9D9D9]/20 w-[70px] h-[70px] absolute -left-[103px] top-1/2 -translate-y-1/2 rounded-full max-lg:hidden"></div>
+        <div className="border-[#D9D9D9] border backdrop-blur-[2px] bg-[#D9D9D9]/20 w-[50px] h-[50px] absolute -left-[93px] top-1/2 -translate-y-1/2 rounded-full max-lg:hidden"></div>
       </div>
       <Button variant="primary" className="!w-[180px] lg:hidden mt-2">
         Launch App
