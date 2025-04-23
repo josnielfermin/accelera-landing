@@ -9,7 +9,7 @@ const Accelera = () => {
         className="w-full h-full object-contain relative z-[1] bottom-[-50px] max-xl2:bottom-[85px] max-[1870px]:right-10 max-lg:top-0 max-xxs:top-6 max-lg:right-0 max-sm:-right-20 max-xs:-right-40 max-xxs:-right-52 max-[280px]:-right-60"
       /> */}
       <video
-        className="w-full h-full object-contain relative z-[1] bottom-[-30px] max-xl2:bottom-[65px] max-[1870px]:right-10 max-lg:top-0 max-xxs:top-6 max-lg:right-0 max-sm:-right-20 max-xs:-right-40 max-xxs:-right-52 max-[280px]:-right-60"
+        className="w-full h-full object-contain relative z-[4] bottom-[-30px] max-xl2:bottom-[65px] max-[1870px]:right-10 max-lg:top-0 max-xxs:top-6 max-lg:right-0 max-sm:-right-20 max-xs:-right-40 max-xxs:-right-52 max-[280px]:-right-60"
         style={{ mixBlendMode: 'lighten' }}
         autoPlay
         loop

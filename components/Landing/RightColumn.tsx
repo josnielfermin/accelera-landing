@@ -24,7 +24,7 @@ const RightColumn = () => {
               className="lg:!w-[150%] lg:!h-[150%] !w-[100%] !h-[100%] object-contain absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 mix-blend-lighten max-w-[350px]"
             /> */}
             <video
-              className="w-full h-full mix-blend-lighten relative"
+              className="w-full h-full mix-blend-lighten relative z-[4]"
               style={{ mixBlendMode: 'lighten' }}
               autoPlay
               loop
