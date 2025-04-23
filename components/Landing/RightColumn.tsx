@@ -24,7 +24,7 @@ const RightColumn = () => {
               className="lg:!w-[150%] lg:!h-[150%] !w-[100%] !h-[100%] object-contain absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 mix-blend-lighten max-w-[350px]"
             />
           </div>
-          <div className="flex flex-col w-full items-center max-lg:-ml-8 max-[380px]:ml-auto">
+          <div className="flex flex-col w-full items-center max-lg:-ml-8 max-[380px]:ml-auto z-[6] relative">
             <h3 className="xl2:text-4xl text-2xl font-normal xl2:mb-4 lg:mb-1 text-white text-center">
               Season <span className="font-bold">Zero</span>
             </h3>
