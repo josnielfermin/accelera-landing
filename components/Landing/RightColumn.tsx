@@ -18,11 +18,24 @@ const RightColumn = () => {
       <div className="bg-transparent rounded-none flex flex-col max-lg:flex-row max-md:flex-col w-full items-center xl2:max-w-[350px] lg:max-w-[280px]">
         {/* <Coin /> */}
         <div className="flex lg:flex-col max-[380px]:flex-col w-full items-center">
-          <div className="relative w-full max-w-md xl2:h-[280px] h-[200px] max-2xl:h-[190px] mx-auto flex items-center justify-center overflow-hidden z-[6]">
-            <SplineViewer
+          <div className="relative w-full max-w-md xl2:h-[280px] h-[200px] max-2xl:h-[190px] mx-auto flex items-center justify-center overflow-hidden">
+            {/* <SplineViewer
               url="https://prod.spline.design/TWI18UldhK6eBwx1/scene.splinecode"
               className="lg:!w-[150%] lg:!h-[150%] !w-[100%] !h-[100%] object-contain absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 mix-blend-lighten max-w-[350px]"
-            />
+            /> */}
+            <video
+              className="w-full h-full mix-blend-lighten relative"
+              style={{ mixBlendMode: 'lighten' }}
+              autoPlay
+              loop
+              muted
+              playsInline
+            >
+              <source
+                src={'/static/images/landing/usdx.mp4'}
+                type="video/mp4"
+              ></source>
+            </video>
           </div>
           <div className="flex flex-col w-full items-center max-lg:-ml-8 max-[380px]:ml-auto z-[6] relative">
             <h3 className="xl2:text-4xl text-2xl font-normal xl2:mb-4 lg:mb-1 text-white text-center">
