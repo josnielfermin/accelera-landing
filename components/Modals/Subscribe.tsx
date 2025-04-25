@@ -167,7 +167,7 @@ const Mobile = ({ openModal, setOpenModal }: SubscribeProps) => {
   return (
     <div className="w-full px-4 md:px-8 lg:px-16 relative h-full overflow-hidden">
       <div
-        className="flex items-center justify-between max-lg:justify-center h-full container max-lg:h-[72px]"
+        className="flex items-center justify-between max-lg:justify-center h-full container"
         ref={ref}
       >
         <div

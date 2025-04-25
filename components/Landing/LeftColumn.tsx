@@ -8,8 +8,8 @@ import { Button } from '@/components//UI';
 const LeftColumn = () => {
   const [users, setUsers] = useState(USERS);
   return (
-    <div className="flex flex-col justify-between h-full max-[1865px]:ml-[72px] max-lg:ml-0">
-      <div className="text-base xl2:text-lg max-lg:text-sm max-sm:text-xs text-white max-w-2xl !leading-[1.3] lg:ml-5 relative z-[5]">
+    <div className="flex flex-col justify-between h-full max-[1865px]:ml-[72px] lg:pl-12 max-lg:ml-0 max-w-[658px] w-full -mt-5">
+      <div className="text-base xl2:text-lg max-lg:text-sm max-sm:text-xs text-white !leading-[1.3] lg:ml-5 relative z-[5] max-xs:max-w-[242px]">
         Accelera is a next-generation CDP protocol on Converge, offering
         borrowers superior strategy composability with user-set interest rates,
         instant liquidity, efficient leverage, and native stablecoin yields.
@@ -17,7 +17,7 @@ const LeftColumn = () => {
       </div>
       <Button
         variant="primary"
-        className="!w-[180px] lg:hidden mt-2 relative z-[5]"
+        className="!w-[180px] lg:hidden mt-4 relative z-[5]"
       >
         Launch App
       </Button>
@@ -36,10 +36,10 @@ const LeftColumn = () => {
       <div className="flex flex-col items-start">
         <div className="mt-8 max-lg:mt-[250px] max-[280px]:mt-[290px] flex items-center gap-10 max-[1240px]:gap-2 max-[1240px]:flex-col max-[1240px]:items-start relative z-[5]">
           <div className="xl2:space-y-2 text-white">
-            <h2 className="text-2xl lg:text-3xl xl2:text-4xl font-normal !leading-none">
+            <h2 className="text-2xl lg:text-4xl font-normal !leading-none">
               542,897
             </h2>
-            <p className="text-2xl lg:text-3xl xl2:text-4xl font-bold !leading-none">
+            <p className="text-2xl lg:text-4xl font-bold !leading-none">
               Users
             </p>
           </div>

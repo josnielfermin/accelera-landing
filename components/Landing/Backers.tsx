@@ -45,7 +45,7 @@ const Backers = () => {
   }, []);
 
   return (
-    <div className="relative mt-8 flex flex-col max-lg:items-center max-lg:mx-auto gap-3 xl2:max-w-[600px] max-w-[500px]">
+    <div className="relative mt-8 max-lg:mt-0 max-md:mt-14 flex flex-col max-lg:items-center max-lg:mx-auto gap-3 xl2:max-w-[600px] max-w-[500px]">
       <div className="w-[200%] absolute top-0 right-0 h-[1px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden overflow-hidden">
         {/* <div className="w-[70%] h-40 rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.43)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-1/2 -translate-x-1/2 animate-horizontal-light z-[100] bg-blend-overlay"></div> */}
       </div>
@@ -53,7 +53,7 @@ const Backers = () => {
       <div className="absolute -top-2.5 -left-[58px] bg-[#D9D9D9] w-4 h-4 max-lg:hidden z-[5]"></div>
       <div className="absolute -bottom-14 -right-2.5 bg-[#D9D9D9] w-4 h-4 max-lg:hidden z-[5]"></div>
       <div className="flex items-center justify-between w-full relative z-[5]">
-        <p className="xl2:text-xl text-lg font-normal text-white">
+        <p className="max-lg:text-lg text-xl font-normal text-white">
           Backed by <span className="font-bold">The Best</span>
         </p>
         <div className="flex items-center cursor-pointer relative z-10">
@@ -83,8 +83,8 @@ const Backers = () => {
             <Image
               src={item.image}
               alt={item.name}
-              width={isDesktopLarge ? item.width : item.width * 0.8}
-              height={isDesktopLarge ? item.height : item.height * 0.8}
+              width={isDesktopLarge ? item.width : item.width * 0.9}
+              height={isDesktopLarge ? item.height : item.height * 0.9}
               className={`${item.loaded ? 'opacity-100' : 'opacity-0'}`}
               quality={100}
               onLoad={() => {

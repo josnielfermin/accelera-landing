@@ -93,14 +93,14 @@ const Header = () => {
         </div>
         <Link
           href="/"
-          className="flex items-center max-xxs:justify-end max-xxs:w-full relative pr-10 h-full max-[1865px]:ml-[31px] max-lg:ml-0"
+          className="flex items-center max-xxs:justify-end max-xxs:w-full relative pr-10 h-full  max-lg:ml-0"
         >
           <Image
             src="/static/images/header/accelera-logo.png"
             alt="Accelera Logo"
             width={158}
             height={47}
-            className="max-xl2:w-[111px] max-xl2:h-[32px] relative z-[3]"
+            className="max-lg:w-[111px] max-lg:h-[32px] relative z-[3]"
             quality={100}
             priority={true}
           />
