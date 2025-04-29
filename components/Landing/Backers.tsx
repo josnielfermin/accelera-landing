@@ -50,8 +50,8 @@ const Backers = () => {
         {/* <div className="w-[70%] h-40 rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.43)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-1/2 -translate-x-1/2 animate-horizontal-light z-[100] bg-blend-overlay"></div> */}
       </div>
       <div className="w-[1px] absolute top-0 right-0 h-[600px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
-      <div className="absolute -top-2.5 -left-[58px] bg-[#D9D9D9] w-4 h-4 max-lg:hidden z-[5]"></div>
-      <div className="absolute -bottom-14 -right-2.5 bg-[#D9D9D9] w-4 h-4 max-lg:hidden z-[5]"></div>
+      <div className="absolute -top-2 -left-[56px] bg-[#D9D9D9] w-4 h-4 max-lg:hidden z-[5]"></div>
+      <div className="absolute -bottom-14 -right-2 bg-[#D9D9D9] w-4 h-4 max-lg:hidden z-[5]"></div>
       <div className="flex items-center justify-between w-full relative z-[5]">
         <p className="max-lg:text-lg text-xl font-normal text-white">
           Backed by <span className="font-bold">The Best</span>

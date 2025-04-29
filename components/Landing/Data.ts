@@ -1,18 +1,3 @@
-export const MAIN_BRANDS = [
-  {
-    logo: '/static/images/landing/buy-here/llama-swap-black.png',
-    url: 'https://swap.defillama.com',
-  },
-  {
-    logo: '/static/images/landing/buy-here/linex-black.png',
-    url: 'https://app.lynex.fi/swap?outputCurrency=0xe07C2bdbb8C787962C2C6e93C11a152110E7E4d2',
-  },
-  {
-    logo: '/static/images/landing/buy-here/nile-black.png',
-    url: 'https://www.thenile.exchange/swap',
-  },
-];
-
 export const SOCIALS = [
   {
     href: 'https://discord.gg/accelera',

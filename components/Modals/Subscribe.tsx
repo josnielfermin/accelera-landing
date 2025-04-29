@@ -29,7 +29,7 @@ const Common = () => {
       </div>
       <div className="w-full relative max-w-[373px] max-lg:max-w-[285px] z-[2]">
         <Input />
-        <div className="text-[#f0f0f0] cursor-pointer text-xs font-normal py-2 px-5 bg-[#454545] absolute right-3 top-1/2 -translate-y-1/2">
+        <div className="text-[#f0f0f0] cursor-pointer text-xs font-normal py-2 px-5 bg-woodsmoke-800 absolute right-3 top-1/2 -translate-y-1/2">
           Subscribe
         </div>
       </div>

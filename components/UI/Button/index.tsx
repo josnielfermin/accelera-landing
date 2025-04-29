@@ -13,6 +13,7 @@ interface ButtonProps {
   disabled?: boolean;
   href?: string;
   icon?: string;
+  isComing?: boolean;
 }
 
 const AnimateFill = ({
@@ -28,8 +29,8 @@ const AnimateFill = ({
           <div className="w-[60%] absolute right-0 top-0 h-[60%] bg-pastel-green-400 z-[-1] group-hover:translate-x-[100%] group-hover:-translate-y-[100%] transition-all"></div>
           <div className="w-[60%] absolute left-0 bottom-0 h-[60%] bg-pastel-green-400 z-[-1] group-hover:-translate-x-[100%] group-hover:translate-y-[100%] transition-all"></div>
           <div className="w-[60%] absolute right-0 bottom-0 h-[60%] bg-pastel-green-400 z-[-1] transition-all group-hover:translate-x-[100%] group-hover:translate-y-[100%]"></div> */}
-          <div className="w-5 h-5 absolute -left-[9px] -top-[13px] bg-pastel-green-400 z-[-1] rotate-[50deg]"></div>
-          <div className="w-5 h-5 absolute -right-[9px] -bottom-[13px] bg-pastel-green-400 z-[-1] rotate-[50deg]"></div>
+          <div className="w-5 h-5 absolute -left-[9px] -top-[13px] bg-pastel-green-400 group-hover:bg-pastel-green-500 z-[-1] rotate-[50deg]"></div>
+          <div className="w-5 h-5 absolute -right-[9px] -bottom-[13px] bg-pastel-green-400 group-hover:bg-pastel-green-500 z-[-1] rotate-[50deg]"></div>
         </>
       )}
     </>
@@ -44,6 +45,7 @@ const Button = ({
   className,
   variant = 'primary',
   icon,
+  isComing = false,
   ...props
 }: ButtonProps) => {
   const variantClasses = {
@@ -63,7 +65,31 @@ const Button = ({
     className
   );
 
-  const buttonContent = (
+  const textContent = isComing ? (
+    <div className="relative flex items-center justify-center">
+      <span
+        className={cn(
+          'transition-opacity duration-300',
+          'absolute',
+          'group-hover:opacity-0',
+          'opacity-100'
+        )}
+      >
+        {children}
+      </span>
+
+      <span
+        className={cn(
+          'transition-opacity duration-300',
+          'opacity-0 group-hover:opacity-100'
+        )}
+      >
+        Coming Soon
+      </span>
+
+      {icon && <Image className={`ml-2 icon-${variant}`} src={icon} alt="" />}
+    </div>
+  ) : (
     <div className="flex items-center">
       {children}
       {icon && <Image className={`ml-2 icon-${variant}`} src={icon} alt="" />}
@@ -73,7 +99,7 @@ const Button = ({
   if (href) {
     return (
       <Link href={href} onClick={onClick} className={mergeClassName} {...props}>
-        {buttonContent}
+        {textContent}
         <AnimateFill variant={variant} />
       </Link>
     );
@@ -81,7 +107,7 @@ const Button = ({
 
   return (
     <button onClick={onClick} className={mergeClassName} {...props}>
-      {buttonContent}
+      {textContent}
       <AnimateFill variant={variant} />
     </button>
   );

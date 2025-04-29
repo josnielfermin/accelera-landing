@@ -1,8 +1,13 @@
 import SplineViewer from '@/components/Landing/Spline';
+interface AcceleraProps {
+  isLandingPage: boolean;
+}
 
-const Accelera = () => {
+const Accelera = ({ isLandingPage = false }: AcceleraProps) => {
   return (
-    <div className="absolute z-[2] h-[649px] w-[649px] max-2xl:w-[520px] max-2xl:h-[520px] max-xl:w-[420px] max-xl:h-[420px] max-lg:w-[560px] max-lg:h-[560px] lg:bottom-[95px] xl:bottom-[55px] xl2:bottom-[20px] bottom-[-200px] max-lg:top-[120px] max-xs:top-[120px] max-xxs:top-[100px] lg:right-[330px] xl2:right-[380px] right-0 mix-blend-lighten xl2:overflow-hidden max-lg:overflow-hidden">
+    <div
+      className={`absolute z-[2] h-[649px] w-[649px] max-2xl:w-[520px] max-2xl:h-[520px] max-xl:w-[420px] max-xl:h-[420px] max-lg:w-[560px] max-lg:h-[560px] lg:bottom-[95px] xl:bottom-[55px] xl2:bottom-[20px] bottom-[-200px] max-lg:top-[120px] max-xs:top-[120px] max-xxs:top-[100px] lg:right-[330px] xl2:right-[380px] right-0 mix-blend-lighten xl2:overflow-hidden max-lg:overflow-hidden`}
+    >
       {/* <div className="rounded-full blur-[250px] w-[960px] h-[960px] [background:radial-gradient(rgba(0,_0,_0,_0.90),_rgba(0,_0,_0,_0))] absolute bottom-0 left-1/2 -translate-x-1/2 z-[-1]"></div> */}
       {/* <SplineViewer
         url="https://prod.spline.design/fA3jwoAwjAbouj0u/scene.splinecode"

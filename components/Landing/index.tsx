@@ -16,7 +16,7 @@ const Landing = () => {
         <TitleAnimation />
         <div className="flex items-start justify-between max-lg:flex-col lg:gap-8 lg:h-[66vh] lg:min-h-[600px] lg:!max-h-[600px] xl2:mt-[100px] lg:mt-[40px] max-lg:max-w-[90%] max-lg:w-full lg:relative">
           <LeftColumn />
-          <Accelera />
+          <Accelera isLandingPage />
           <RightColumn />
         </div>
       </section>
