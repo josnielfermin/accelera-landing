@@ -37,6 +37,18 @@ body {
 ::-webkit-scrollbar-track {
   @apply bg-transparent;
 }
+/************* Custom ScrollBar ***********/
+::-webkit-scrollbar.custom-scrollbar {
+  @apply mr-[10px] w-1 h-[6px];
+}
+
+::-webkit-scrollbar-track.custom-scrollbar {
+  @apply bg-[#1A201C] h-[6px] rounded-xl bg-opacity-40;
+}
+
+::-webkit-scrollbar-thumb.custom-scrollbar {
+  @apply w-1 bg-pastel-green-400 rounded-xl border-none;
+}
 
 /* ::-webkit-scrollbar-thumb {
   @apply w-2 bg-white border-4 border-solid rounded-xl border-yellow-doge-500 bg-opacity-40;
@@ -51,7 +63,7 @@ body {
   transition: all 0.3s ease;
 } */
 .button-primary {
-  @apply relative flex items-center justify-center w-full xl2:min-h-[50px] xl2:max-h-[50px] min-h-[45px] max-h-[45px] px-4 xl2:text-sm text-xs font-semibold bg-none transition rounded-none focus:outline-none text-black overflow-hidden border-[2px] border-pastel-green-400 hover:text-pastel-green-400 z-[2];
+  @apply relative flex items-center justify-center w-full xl2:min-h-[50px] xl2:max-h-[50px] min-h-[45px] max-h-[45px] px-4 lg:text-sm text-xs font-semibold bg-none transition rounded-none focus:outline-none text-black overflow-hidden border-[2px] border-pastel-green-400 hover:border-pastel-green-500 z-[2] bg-pastel-green-400 hover:bg-pastel-green-500;
   transition: all 0.3s ease;
   clip-path: polygon(
     0% 11px,
@@ -61,6 +73,21 @@ body {
     calc(100% - 13px) 100%,
     0% 100%
   );
+}
+.account-handler-box {
+  @apply relative flex items-center w-full min-h-[50px] max-h-[50px] px-4 lg:text-sm text-xs font-semibold bg-none transition rounded-none focus:outline-none overflow-hidden border border-woodsmoke-800 z-[2];
+  transition: all 0.3s ease;
+  clip-path: polygon(
+    0% 11px,
+    13px 0%,
+    100% 0%,
+    100% calc(100% - 11px),
+    calc(100% - 13px) 100%,
+    0% 100%
+  );
+}
+.button-secondary {
+  @apply relative flex items-center justify-center w-full min-h-[45px] max-h-[45px] px-4 lg:text-sm text-xs font-semibold bg-none transition rounded-[100px] focus:outline-none text-black overflow-hidden z-[2] bg-pastel-green-400 hover:bg-pastel-green-500;
 }
 
 .button-primary:hover .icon-primary {

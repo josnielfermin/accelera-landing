@@ -463,6 +463,12 @@
 .icon-menu-1:before {
   content: '\e8c5';
 } /* '' */
+.icon-settings-1:before {
+  content: '\e8c6';
+} /* '' */
+.icon-bulb:before {
+  content: '\e8c8';
+} /* '' */
 .icon-search-remove:before {
   content: '\e959';
 } /* '' */

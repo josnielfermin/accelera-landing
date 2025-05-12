@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import MenuMobileLink from '@/components/MenuMobile/MenuMobileLink';
 import MenuLine from '@/components/UI/Icons/MenuLine';
-import ComponentVisible from '@/hooks/useVisible';
+import ComponentVisible from '@/library/hooks/useVisible';
 import { useRouter } from 'next/navigation';
 
 import { menuLinksLanding } from '@/data/menuLinks';

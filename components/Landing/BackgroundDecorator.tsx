@@ -30,7 +30,7 @@ const BackgroundDecorator = () => {
 
   return (
     <>
-      <video
+      {/* <video
         className={`h-full w-full object-cover absolute top-0 left-0 z-[-10] transition-all select-none ${
           isVideoLoaded ? 'opacity-100' : 'opacity-0'
         }`}
@@ -44,8 +44,8 @@ const BackgroundDecorator = () => {
         }}
       >
         <source src={'/static/videos/fluid.mp4'} type="video/mp4"></source>
-      </video>
-      <Image
+      </video> */}
+      {/* <Image
         src="/static/images/background-fluid.webp"
         width={2195}
         height={1235}
@@ -57,13 +57,13 @@ const BackgroundDecorator = () => {
         className={`h-full w-full object-cover absolute top-0 left-0 z-[-10] transition-all select-none ${
           isVideoLoaded ? 'opacity-0' : 'opacity-100'
         }`}
-      />
+      /> */}
       <Image
         src={'/static/images/background-decorator.webp'}
         alt=""
         width={1565}
         height={1956}
-        className={`absolute top-0 left-0 -z-[9] object-cover w-full h-full mix-blend-overlay select-none transition-all ${
+        className={`absolute top-0 left-0 object-cover w-full h-full mix-blend-overlay select-none transition-all ${
           backgroundDecoratorLoaded ? 'opacity-100' : 'opacity-0'
         }`}
         quality={100}
@@ -79,8 +79,8 @@ const BackgroundDecorator = () => {
         height={1080}
         quality={100}
         priority={true}
-        className={`absolute top-0 left-0 -z-[6] object-cover w-full h-full mix-blend-multiply select-none transition-all ${
-          backgroundDecoratorLoaded ? 'opacity-100' : 'opacity-0'
+        className={`absolute top-0 left-0 z-[1] object-cover w-full h-full mix-blend-multiply select-none transition-all ${
+          backgroundDecoratorLoaded ? 'opacity-80' : 'opacity-0'
         }`}
         onLoad={() => {
           setIsBackgroundDecorator2Loaded(true);
@@ -88,11 +88,11 @@ const BackgroundDecorator = () => {
       />
       <div className="w-full h-full absolute top-0 left-0 overflow-hidden">
         <Image
-          src={'/static/images/landing/decorator-1.webp'}
+          src={'/static/images/landing/decorator-1-minimalist.png'}
           alt=""
-          width={1095}
-          height={1384}
-          className={`absolute -top-10 -left-16 -z-[7] max-lg:hidden select-none transition-all ${
+          width={742}
+          height={1638}
+          className={`absolute top-0 left-0 max-lg:hidden select-none transition-all ${
             decoratorLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           quality={100}
@@ -106,7 +106,7 @@ const BackgroundDecorator = () => {
           width={414}
           height={524}
           className={`absolute top-0 left-0 -z-[7] lg:hidden select-none transition-all ${
-            decoratorMobileLoaded ? 'opacity-100' : 'opacity-0'
+            decoratorMobileLoaded ? 'opacity-40' : 'opacity-0'
           }`}
           quality={100}
           onLoad={() => {
@@ -114,11 +114,11 @@ const BackgroundDecorator = () => {
           }}
         />
         <Image
-          src={'/static/images/landing/decorator-2.webp'}
+          src={'/static/images/landing/decorator-2-minimalist.png'}
           alt=""
-          width={583}
-          height={1892}
-          className={`absolute -bottom-60 -right-16 opacity-75 -z-[7] max-xs:hidden select-none transition-all ${
+          width={430}
+          height={1492}
+          className={`absolute bottom-0 right-0 max-xs:hidden select-none transition-all ${
             decoratorLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           quality={100}
@@ -132,7 +132,7 @@ const BackgroundDecorator = () => {
           width={236}
           height={767}
           className={`absolute bottom-0 left-[0px] max-xs:w-full -z-[7] xs:hidden select-none transition-all ${
-            decoratorMobileLoaded ? 'opacity-100' : 'opacity-0'
+            decoratorMobileLoaded ? 'opacity-40' : 'opacity-0'
           }`}
           quality={100}
           onLoad={() => {
@@ -140,7 +140,7 @@ const BackgroundDecorator = () => {
           }}
         />
       </div>
-      <div className="bg-woodsmoke-950/80 w-full h-full absolute top-0 left-0 z-[-8]"></div>
+      {/* <div className="bg-woodsmoke-950/80 w-full h-full absolute top-0 left-0 z-[-8]"></div> */}
       <div className="absolute h-[410px] w-full top-0 overflow-hidden">
         <div className="w-[410px] h-[410px] rounded-full [background:radial-gradient(50%_50%_at_50%_50%,_#000_0%,_rgba(0,_0,_0,_0.00)_100%)] absolute left-1/2 -translate-x-1/2 top-[-200px] lg:hidden z-[-4]"></div>
       </div>

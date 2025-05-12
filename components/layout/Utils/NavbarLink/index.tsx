@@ -1,4 +1,4 @@
-import ComponentVisible from '@/hooks/useVisible';
+import ComponentVisible from '@/library/hooks/useVisible';
 
 import { Link } from '@/interfaces';
 

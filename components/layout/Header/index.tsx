@@ -1,37 +1,71 @@
 'use client';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { menuLinksLanding } from '@/data/menuLinks';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/UI';
-import ComponentVisible from '@/hooks/useVisible';
+import ComponentVisible from '@/library/hooks/useVisible';
+import useMediaQuery from '@/library/hooks/useMediaQuery';
+import AccountHandler from '@/components/layout/Utils/AccountHandler';
+import useActiveConnectionDetails from '@/library/hooks/web3/useActiveConnectionDetails';
+
 const NavItem = ({
   href,
   name,
   isActive,
+  isComing,
 }: {
   href: string;
   name: string;
   isActive: boolean;
+  isComing: boolean;
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (isComing) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+  };
+
   return (
     <Link
       href={href}
-      className={`text-white xl2:text-sm text-xs font-normal py-2 px-8 max-lg:px-16 border-[#5CDE66] border-b hover:border-opacity-100 transition-all z-[10] ${
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={handleClick}
+      className={`relative text-white xl2:text-sm text-xs font-normal py-2 px-8 max-lg:px-16 border-[#5CDE66] border-b hover:border-opacity-100 transition-all z-[10] ${
         isActive ? 'border-opacity-100' : 'border-opacity-0'
       }`}
     >
-      {name}
+      <span
+        className={`transition-opacity duration-300 ${
+          isComing && isHovered ? 'opacity-0' : 'opacity-100'
+        }`}
+      >
+        {name}
+      </span>
+      {isComing && (
+        <span
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300 whitespace-nowrap ${
+            isHovered ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          COMING SOON
+        </span>
+      )}
     </Link>
   );
 };
-const Header = () => {
+const LandingHeader = () => {
   const { ref, isVisible, setIsVisible } = ComponentVisible(false);
   const pathname = usePathname();
   return (
     <header className="w-full px-4 md:px-8 lg:px-16 relative overflow-hidden h-[80px]">
-      <div className="w-[120%] absolute bottom-0 left-[-10%] lg:h-[1.5px] h-[1px] bg-white lg:bg-opacity-50 bg-blend-overlay lg:z-[-8]">
-        <div className="w-[70%] h-40 rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.43)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-1/2 -translate-x-1/2 animate-horizontal-light z-[100] bg-blend-overlay"></div>
+      <div className="w-[120%] absolute bottom-0 left-[-10%] lg:h-[1.5px] h-[1px] bg-white lg:bg-opacity-50 bg-blend-overlay">
+        {/* <div className="w-[70%] h-40 rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.43)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-1/2 -translate-x-1/2 animate-horizontal-light z-[100] bg-blend-overlay"></div> */}
       </div>
       <div
         className="flex items-center justify-between max-lg:justify-center h-full container max-lg:h-[72px]"
@@ -78,14 +112,15 @@ const Header = () => {
                   key={link.name}
                   href={link.href}
                   name={link.name}
+                  isComing={link.isComing}
                   isActive={pathname === link.href}
                 />
               ))}
             </nav>
             <Button
-              href="/app"
               variant="primary"
               className="max-w-[90%] !w-[180px] mx-auto relative z-[10]"
+              isComing={true}
             >
               Launch App
             </Button>
@@ -93,14 +128,14 @@ const Header = () => {
         </div>
         <Link
           href="/"
-          className="flex items-center max-xxs:justify-end max-xxs:w-full relative pr-10 h-full max-[1865px]:ml-[31px] max-lg:ml-0"
+          className="flex items-center max-xxs:justify-end max-xxs:w-full relative pr-10 h-full  max-lg:ml-0"
         >
           <Image
             src="/static/images/header/accelera-logo.png"
             alt="Accelera Logo"
             width={158}
             height={47}
-            className="max-xl2:w-[111px] max-xl2:h-[32px] relative z-[3]"
+            className="max-lg:w-[111px] max-lg:h-[32px] relative z-[3]"
             quality={100}
             priority={true}
           />
@@ -113,21 +148,80 @@ const Header = () => {
               key={link.name}
               href={link.href}
               name={link.name}
+              isComing={link.isComing}
               isActive={pathname === link.href}
             />
           ))}
         </nav>
 
-        <Button
-          href="/app"
-          variant="primary"
-          className="max-lg:hidden max-[1865px]:mr-[31px] max-w-[151px] xl2:max-w-[171px]"
-        >
-          Launch App
-        </Button>
+        <div className="relative max-w-[171px] min-w-[171px] w-full pl-10 -left-10 max-lg:hidden">
+          <Button
+            variant="primary"
+            className="max-lg:hidden max-[1865px]:mr-[31px] max-w-[151px] min-w-[171px] xl2:max-w-[171px] w-full"
+            isComing={true}
+          >
+            Launch App
+          </Button>
+        </div>
       </div>
     </header>
   );
+};
+
+const ProductHeader = () => {
+  const { ref, isVisible, setIsVisible } = ComponentVisible(false);
+  const pathname = usePathname();
+  const isDesktop = useMediaQuery('(min-width: 1024px)');
+  const { isConnected, account } = useActiveConnectionDetails();
+  return (
+    <header className="w-full px-4 xl:px-8 relative overflow-hidden max-lg:bg-[#2F2F2F]/10 max-lg:backdrop-blur-[5.1px] h-[80px] max-lg:z-[10]">
+      <div className="w-[120%] absolute bottom-0 left-[-10%] lg:h-[1.5px] h-[1px] bg-white/50 bg-blend-overlay">
+        {/* <div className="w-[70%] h-40 rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.43)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-1/2 -translate-x-1/2 animate-horizontal-light z-[100] bg-blend-overlay"></div> */}
+      </div>
+      <div
+        className="flex items-center justify-between max-lg:justify-end h-full container max-lg:h-[72px] relative"
+        ref={ref}
+      >
+        <Link
+          href="/"
+          className="flex items-center max-xxs:w-full relative pr-10 h-full  max-lg:ml-0 max-lg:absolute max-lg:top-1/2 max-lg:-translate-y-1/2 max-lg:left-0"
+        >
+          <Image
+            src="/static/images/header/accelera-logo.png"
+            alt="Accelera Logo"
+            width={158}
+            height={47}
+            className="max-lg:w-[111px] max-lg:h-[32px] relative z-[3]"
+            quality={100}
+            priority={true}
+          />
+          <div className="w-[1px] absolute -top-10 right-0 h-[400%] bg-white/50 bg-blend-overlay z-[-8] max-lg:hidden"></div>
+        </Link>
+
+        <nav className="items-center space-x-8 text-white my-6 max-lg:hidden relative z-[3]">
+          {menuLinksLanding.map((link) => (
+            <NavItem
+              key={link.name}
+              href={link.href}
+              name={link.name}
+              isComing={link.isComing}
+              isActive={pathname === link.href}
+            />
+          ))}
+        </nav>
+
+        <div className="relative max-w-[245px] w-full lg:pl-10 max-lg:flex max-lg:justify-end max-lg:items-center">
+          <div className="w-[1px] absolute -top-10 left-0 h-[400%] bg-white/50 bg-blend-overlay z-[-8] max-lg:hidden"></div>
+          <AccountHandler />
+        </div>
+      </div>
+    </header>
+  );
+};
+
+const Header = () => {
+  const pathname = usePathname();
+  return <>{pathname === '/' ? <LandingHeader /> : <ProductHeader />}</>;
 };
 
 export default Header;

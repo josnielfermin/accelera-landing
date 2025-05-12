@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import useMediaQuery from '@/hooks/useMediaQuery';
+import useMediaQuery from '@/library/hooks/useMediaQuery';
 
 const LogoHeader = () => {
   const isSM = useMediaQuery('(min-width: 640px)');
