@@ -1,34 +1,49 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Action, AnyAction, configureStore, Store, ThunkAction, ThunkDispatch } from '@reduxjs/toolkit'
-import { getStoredState, persistReducer, persistStore, REHYDRATE } from 'redux-persist'
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import createWebStorage from 'redux-persist/lib/storage/createWebStorage'
-import reducer from './reducer'
+import {
+  Action,
+  AnyAction,
+  configureStore,
+  Store,
+  ThunkAction,
+  ThunkDispatch,
+} from '@reduxjs/toolkit';
+import {
+  getStoredState,
+  persistReducer,
+  persistStore,
+  REHYDRATE,
+} from 'redux-persist';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
+import reducer from './reducer';
 
-const PERSISTED_KEYS: string[] = ['user', 'apr']
+const PERSISTED_KEYS: string[] = ['user'];
 
 const createNoopStorage = () => {
   return {
     getItem(_key: any) {
-      return Promise.resolve(null)
+      return Promise.resolve(null);
     },
     setItem(_key: any, value: any) {
-      return Promise.resolve(value)
+      return Promise.resolve(value);
     },
     removeItem(_key: any) {
-      return Promise.resolve()
+      return Promise.resolve();
     },
-  }
-}
-const storage = typeof window !== 'undefined' ? createWebStorage('local') : createNoopStorage()
+  };
+};
+const storage =
+  typeof window !== 'undefined'
+    ? createWebStorage('local')
+    : createNoopStorage();
 
 const persistConfig: any = {
   key: 'root',
   whitelist: PERSISTED_KEYS,
   storage,
-}
+};
 
-const persistedReducer = persistReducer(persistConfig, reducer)
+const persistedReducer = persistReducer(persistConfig, reducer);
 
 function makeStore(preloadedState = undefined) {
   return configureStore({
@@ -41,62 +56,72 @@ function makeStore(preloadedState = undefined) {
       }),
     devTools: process.env.NODE_ENV === 'development',
     preloadedState,
-  })
+  });
 }
 
-let store: Store<any, AnyAction>
+// let store: Store<any, AnyAction>;
 
-export const getOrCreateStore = (preloadedState = undefined) => {
-  let _store = store ?? makeStore(preloadedState)
-  const formattedPreloadedState = preloadedState ?? {}
+// export const getOrCreateStore = (preloadedState = undefined) => {
+//   let _store = store ?? makeStore(preloadedState);
+//   const formattedPreloadedState = preloadedState ?? {};
 
-  // After navigating to a page with an initial Redux state, merge that state
-  // with the current state in the store, and create a new store
-  if (preloadedState && store) {
-    _store = makeStore({
-      ...store.getState(),
-      ...formattedPreloadedState,
-    })
-    // Reset the current store
-    store = makeStore()
-  }
+//   // After navigating to a page with an initial Redux state, merge that state
+//   // with the current state in the store, and create a new store
+//   if (preloadedState && store) {
+//     _store = makeStore({
+//       ...store.getState(),
+//       ...formattedPreloadedState,
+//     });
+//     // Reset the current store
+//     store = makeStore();
+//   }
 
-  // For SSG and SSR always create a new store
-  if (typeof window === 'undefined') return _store
+//   // For SSG and SSR always create a new store
+//   if (typeof window === 'undefined') return _store;
 
-  // Create the store once in the client
-  if (!store) store = _store
+//   // Create the store once in the client
+//   if (!store) store = _store;
 
-  return _store
-}
+//   return _store;
+// };
+
+const store = makeStore();
 
 function crossBrowserListener(store: any, persistConfig: any) {
   return async function () {
-    const state = await getStoredState(persistConfig)
+    const state = await getStoredState(persistConfig);
 
     store.dispatch({
       type: REHYDRATE,
       key: persistConfig.key,
       payload: state,
-    })
-  }
+    });
+  };
 }
 
-store = getOrCreateStore()
+// store = getOrCreateStore();
 
-export type AppState = ReturnType<typeof store.getState>
+export type AppState = ReturnType<typeof store.getState>;
 
-export type AppDispatch = typeof store.dispatch
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppState, unknown, Action<string>>
-export type AppThunkDispatch = ThunkDispatch<{}, void, AnyAction>
+export type AppDispatch = typeof store.dispatch;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  AppState,
+  unknown,
+  Action<string>
+>;
+export type AppThunkDispatch = ThunkDispatch<{}, void, AnyAction>;
 
-export const useAppDispatch = () => useDispatch<AppDispatch>()
-export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
 
-export default store
+export default store;
 
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);
 
 if (typeof window === 'object') {
-  window.addEventListener('storage', crossBrowserListener(store, persistConfig))
+  window.addEventListener(
+    'storage',
+    crossBrowserListener(store, persistConfig)
+  );
 }

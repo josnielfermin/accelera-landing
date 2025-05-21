@@ -1,111 +1,200 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import Image from 'next/image';
-import { Input, Button, Slider } from '@/components/UI';
-import { writeContract } from '@wagmi/core';
-import { useAccount, useWriteContract, useReadContract } from 'wagmi';
-import { VAULT_CONTRACT_ABI, VAULT_CONTRACT_ADDRESS } from '@/lib/contract';
-import { parseEther, erc20Abi, formatUnits } from 'viem';
+import { Input, Button, Slider, Card } from '@/components/UI';
+import useAccountPredepositData from '@/library/hooks/web3/use-account';
+import {
+  PREDEPOSIT_VAULT_ADDRESS,
+  USDE_ADDRESS,
+} from '@/library/constants/addresses';
+import useToken from '@/library/hooks/web3/use-token';
 import useActiveConnectionDetails from '@/library/hooks/web3/useActiveConnectionDetails';
+import { useWriteContract } from 'wagmi';
+import isSupportedChain from '@/library/utils/is-supported-chain';
+import { useToast } from '@/context/ToastContext';
+import { PreDepositRpc } from '@/library/request/pre-deposit.rpc';
+import SupportedChainIds from '@/library/types/supported-chain-ids.enum';
+import getChainById from '@/library/utils/get-chain-by-id';
+import { FALLBACK_CHAIN_ID } from '@/library/constants/default-chain-info';
+import { formatCurrency } from '@/library/utils/numbers';
 import Process from '@/components/Modals/Process';
-
-const USDE_TOKEN_ADDRESS = '0x5fbdb2315678afecb367f032d93f642f64180aa3';
-
+import { Address, erc20Abi } from 'viem';
+import TokensRpc from '@/library/request/tokens.rpc';
+import { useRefreshUsdeToken, useUsdeTokenState } from '@/state/user/hooks';
+import { useAppDispatch } from '@/state';
+import { setUsdeTokenState } from '@/state/user/actions';
 const PreDeposits = () => {
-  const { isConnected, account } = useActiveConnectionDetails();
-  const [depositAmount, setDepositAmount] = useState('');
+  const { address, chainId, validChainId, isConnected } =
+    useActiveConnectionDetails();
+  const { showToast } = useToast();
+  const { balance, allowance } = useUsdeTokenState() ?? {};
+  const { currentBalance, currentAllowance, fetchAndStore } =
+    useRefreshUsdeToken(validChainId);
+
+  useEffect(() => {
+    fetchAndStore();
+  }, []);
+
+  // const accountPredepositData = useAccountPredepositData(address);
+  const usdeToken = useToken(USDE_ADDRESS[validChainId], validChainId, {
+    includeAllowance: true,
+    spender: PREDEPOSIT_VAULT_ADDRESS[validChainId],
+    includeBalance: true,
+  });
+
+  const vaultToken = useToken(
+    PREDEPOSIT_VAULT_ADDRESS[validChainId],
+    validChainId,
+    {
+      includeBalance: true,
+    }
+  );
+  const [depositAmount, setDepositAmount] = useState(0);
+  const [approveLoading, setApproveLoading] = useState(false);
+  const { writeContractAsync } = useWriteContract();
+
+  async function handleDeposit() {
+    if (!usdeToken.token) return;
+    if (isApprovalRequired) {
+      setApproveLoading(true);
+      const approveReq = TokensRpc.buildApproveReq(
+        usdeToken.token.address as Address,
+        PREDEPOSIT_VAULT_ADDRESS[validChainId],
+        BigInt(depositAmount * 10 ** usdeToken.token.decimals)
+      );
+      await writeContractAsync(approveReq, {
+        onError: (error) => {
+          // console.error("Approve error:", error);
+          return;
+        },
+        onSettled: () => {
+          setApproveLoading(false);
+        },
+      });
+    }
+    setApproveLoading(false);
+    const preDepositReq = PreDepositRpc.buildPreDepositReq(
+      validChainId,
+      usdeToken.token.address as Address,
+      BigInt(depositAmount * 10 ** usdeToken.token.decimals)
+    );
+    writeContractAsync(preDepositReq, {
+      onSuccess: () => {
+        showToast({
+          message:
+            'Deposit successful! Your funds have been added to the vault.',
+          iconClass: 'icon-bulb',
+        });
+      },
+      onError: (error) => {
+        console.error('Deposit error:', error);
+        showToast({
+          message:
+            'Failed to complete deposit. Please check your balance and try again.',
+          iconClass: 'icon-bulb',
+        });
+      },
+    });
+  }
+
+  const isApprovalRequired = useMemo(() => {
+    if (!usdeToken?.allowance) return true;
+    return usdeToken?.allowance >= +depositAmount;
+  }, [usdeToken?.allowance, depositAmount]);
+  function handlePart(part: number): void {
+    if (!usdeToken.token || usdeToken.shifftedBalance <= 0) {
+      setDepositAmount(0);
+      return;
+    }
+
+    setDepositAmount(usdeToken.shifftedBalance * part);
+  }
   const [openModalLoading, setOpenModalLoading] = useState(false);
   const [openModalError, setOpenModalError] = useState(false);
   const [openModalSuccess, setOpenModalSuccess] = useState(false);
 
-  const { address } = useAccount();
-  const { writeContractAsync, isPending } = useWriteContract();
-  const [referralCode, setReferralCode] = useState('');
+  const [disabled, buttonText] = useMemo(() => {
+    if (!address || !chainId || !isConnected) return [false, 'Connect Wallet'];
+    if (usdeToken.loading || vaultToken.loading) return [true, 'Loading...'];
+    if (!isSupportedChain(chainId))
+      return [false, `Switch to ${getChainById(FALLBACK_CHAIN_ID)?.name}`];
+    if (+depositAmount <= 0) return [true, 'Enter amount'];
+    if (+depositAmount > usdeToken.shifftedBalance)
+      return [true, 'Insufficient balance'];
+    if (approveLoading) return [true, 'Approving...'];
+    if (isApprovalRequired) return [false, 'Approve'];
 
-  const handleDeposit = async () => {
-    if (!isConnected) return;
-
-    setOpenModalLoading(true);
-    const amount = parseEther(depositAmount);
-
-    try {
-      const tx = await writeContractAsync({
-        address: VAULT_CONTRACT_ADDRESS,
-        abi: VAULT_CONTRACT_ABI,
-        functionName: 'depositWithReferral',
-        args: [amount, address, referralCode],
-      });
-      setOpenModalLoading(false);
-    } catch (err) {
-      setOpenModalLoading(false);
-      setOpenModalError(true);
-    }
-  };
-  const {
-    data: balance,
-    isLoading,
-    isError,
-  } = useReadContract({
-    address: USDE_TOKEN_ADDRESS,
-    abi: erc20Abi,
-    functionName: 'balanceOf',
-    args: [address!],
-    // enabled: Boolean(address),
-  });
-  console.log('balance :>> ', balance);
-  // const formatted = formatUnits(balance as bigint, 18);
-
+    return [false, 'Deposit'];
+  }, [
+    address,
+    chainId,
+    isConnected,
+    depositAmount,
+    isApprovalRequired,
+    usdeToken.shifftedBalance,
+    approveLoading,
+  ]);
   return (
     <>
-      <div className="flex items-center gap-4 px-5 max-xs:gap-2 max-xs:px-2.5 select-none w-full">
-        <div className="rounded-[20px] bg-[#1A201C] relative flex flex-col min-w-[105px] lg:min-w-[150px] w-full pt-7 px-4 max-xxs:px-2 lg:pb-[17px] pb-3 gap-4">
-          <Image
-            src={'/static/images/season-zero/usde.png'}
-            alt="usde"
-            width={28}
-            height={28}
-            className="absolute right-2 top-2 rounded-full"
-          />
-          <div className="text-woodsmoke-50 text-2xl font-normal">
-            {/* {formatted} */}0
-          </div>
-          <div className="text-[10px] font-normal text-woodsmoke-50 whitespace-nowrap">
-            USDe Balance
-          </div>
-        </div>
-        <div className="rounded-[20px] bg-[#1A201C] relative flex flex-col min-w-[105px] lg:min-w-[150px] w-full pt-7 px-4 max-xxs:px-2 lg:pb-[17px] pb-3 gap-4">
-          <div className="absolute right-2 top-2 rounded-full w-7 h-7 [background:linear-gradient(0deg,_#354239_0%,_#354239_100%)] flex items-center justify-center">
-            <span className="icon-pig text-pastel-green-500 text-xs"></span>
-          </div>
-          <div className="text-woodsmoke-50 text-2xl font-normal">0</div>
-          <div className="text-[10px] font-normal text-woodsmoke-50 whitespace-nowrap">
-            USDe Deposited
-          </div>
-        </div>
-        <div className="rounded-[20px] bg-[#1A201C] relative flex flex-col min-w-[105px] lg:min-w-[150px] w-full pt-7 px-4 max-xxs:px-2 lg:pb-[17px] pb-3 gap-4">
-          <div className="absolute right-2 top-2 rounded-full w-7 h-7 [background:linear-gradient(0deg,_#354239_0%,_#354239_100%)] flex items-center justify-center">
-            <span className="icon-rocket-1 text-pastel-green-500 text-xs"></span>
-          </div>
-          <div className="text-woodsmoke-50 text-2xl font-normal">0</div>
-          <div className="text-[10px] font-normal text-woodsmoke-50 whitespace-nowrap">
-            Total Points
-          </div>
-        </div>
+      <div className="flex items-center gap-4 px-5 max-xs:gap-2 max-xs:px-2.5 select-none w-full max-[370px]:flex-wrap">
+        <Card
+          title={'USDe Balance'}
+          value={formatCurrency(usdeToken.shifftedBalance)}
+          image={'/static/images/season-zero/usde.png'}
+        />
+        <Card
+          title={'Deposited USDe'}
+          value={formatCurrency(vaultToken.shifftedBalance)}
+          icon={
+            <div className="absolute right-2 top-2 rounded-full w-7 h-7 [background:linear-gradient(0deg,_#354239_0%,_#354239_100%)] flex items-center justify-center">
+              <span className="icon-pig text-pastel-green-500 text-xs"></span>
+            </div>
+          }
+        />
+        <Card
+          title={'Total Points'}
+          value={0}
+          icon={
+            <div className="absolute right-2 top-2 rounded-full w-7 h-7 [background:linear-gradient(0deg,_#354239_0%,_#354239_100%)] flex items-center justify-center">
+              <span className="icon-rocket-1 text-pastel-green-500 text-xs"></span>
+            </div>
+          }
+        />
       </div>
       <div className="relative px-5 w-full">
         <Input
           placeholder="Enter amount"
           inputClassName="w-auto"
           value={depositAmount}
-          onInput={(e: any) => setDepositAmount(e.target.value)}
+          onInput={(e: any) => {
+            console.log('e :>> ', e);
+            setDepositAmount(e);
+          }}
+          onlyNumbers={true}
+          precision={2}
           postfix={
             <div className="flex items-center gap-1">
-              <div className="bg-[#2F3932] w-[60px] h-[35px] rounded-[100px] flex items-center justify-center text-pastel-green-50 text-xs font-normal cursor-pointer select-none active:bg-pastel-green-400 max-sm:hidden">
+              <div
+                className="bg-[#2F3932] w-[60px] h-[35px] rounded-[100px] flex items-center justify-center text-pastel-green-50 text-xs font-normal cursor-pointer select-none active:bg-pastel-green-400 max-sm:hidden"
+                onClick={() => {
+                  setDepositAmount(usdeToken.shifftedBalance * 0.25);
+                }}
+              >
                 25%
               </div>
-              <div className="bg-[#2F3932] w-[60px] h-[35px] rounded-[100px] flex items-center justify-center text-pastel-green-50 text-xs font-normal cursor-pointer select-none active:bg-pastel-green-400 max-sm:hidden">
+              <div
+                className="bg-[#2F3932] w-[60px] h-[35px] rounded-[100px] flex items-center justify-center text-pastel-green-50 text-xs font-normal cursor-pointer select-none active:bg-pastel-green-400 max-sm:hidden"
+                onClick={() => {
+                  setDepositAmount(usdeToken.shifftedBalance * 0.5);
+                }}
+              >
                 50%
               </div>
-              <div className="bg-[#2F3932] w-[60px] h-[35px] rounded-[100px] flex items-center justify-center text-pastel-green-50 text-xs font-normal cursor-pointer select-none active:bg-pastel-green-400">
+              <div
+                className="bg-[#2F3932] w-[60px] h-[35px] rounded-[100px] flex items-center justify-center text-pastel-green-50 text-xs font-normal cursor-pointer select-none active:bg-pastel-green-400"
+                onClick={() => {
+                  setDepositAmount(usdeToken.shifftedBalance);
+                }}
+              >
                 Max
               </div>
             </div>
@@ -113,16 +202,20 @@ const PreDeposits = () => {
         />
       </div>
       <div className="relative px-5 w-full">
-        <Slider />
+        <Slider
+          setValue={(value) => setDepositAmount(Number(value))}
+          maxValue={usdeToken.shifftedBalance}
+        />
       </div>
       <div className="w-full relative px-5">
         <Button
           variant="secondary"
           className="!font-normal mb-10 select-none"
-          onClick={handleDeposit}
+          onClick={() => handleDeposit()}
+          disabled={disabled}
         >
-          Deposit
-          <span className="icon-arrow-right ml-2"></span>
+          {buttonText}
+          {!disabled && <span className="icon-arrow-right ml-2"></span>}
         </Button>
       </div>
       <Process

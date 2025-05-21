@@ -1,4 +1,8 @@
-export const shortenAddress = (str: string, maxLength: number) => {
+export const shortenAddress = (
+  str: string | undefined,
+  maxLength: number = 8
+) => {
+  if (!str) return "";
   if (str.length <= maxLength) {
     return str;
   }

@@ -12,12 +12,13 @@ const LeftColumn = () => {
       <div className="text-base xl2:text-lg max-lg:text-sm max-sm:text-xs text-white !leading-[1.3] lg:ml-5 relative z-[5] max-xs:max-w-[242px]">
         Accelera is a next-generation CDP protocol on Converge, offering
         borrowers superior strategy composability with user-set interest rates,
-        instant liquidity, efficient leverage, and native stablecoin yields.
+        instant liquidity, efficient leverage and native stablecoin rewards.
         <div className="border-[#D9D9D9] border backdrop-blur-[2px] bg-[#D9D9D9]/20 w-[70px] h-[70px] absolute -left-[103px] top-1/2 -translate-y-1/2 rounded-full max-lg:hidden"></div>
       </div>
       <Button
         variant="primary"
-        className="!w-[180px] lg:hidden mt-4 relative z-[5]"
+        className="!w-[180px] lg:hidden mt-4 relative !z-[5]"
+        isComing={true}
       >
         Launch App
       </Button>
@@ -33,7 +34,7 @@ const LeftColumn = () => {
         ></Image>
       </div> */}
 
-      <div className="flex flex-col items-start">
+      <div className="flex flex-col items-start relative lg:top-10">
         <div className="mt-8 max-lg:mt-[250px] max-[280px]:mt-[290px] flex items-center gap-10 max-[1240px]:gap-2 max-[1240px]:flex-col max-[1240px]:items-start relative z-[5]">
           <div className="xl2:space-y-2 text-white">
             <h2 className="text-2xl lg:text-4xl font-normal !leading-none">

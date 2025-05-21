@@ -15,11 +15,13 @@ const NavItem = ({
   name,
   isActive,
   isComing,
+  redirect,
 }: {
   href: string;
   name: string;
   isActive: boolean;
   isComing: boolean;
+  redirect: boolean;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -33,6 +35,8 @@ const NavItem = ({
   return (
     <Link
       href={href}
+      target={redirect ? '_blank' : '_self'}
+      rel="noopener noreferrer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
@@ -114,6 +118,7 @@ const LandingHeader = () => {
                   name={link.name}
                   isComing={link.isComing}
                   isActive={pathname === link.href}
+                  redirect={link.redirect}
                 />
               ))}
             </nav>
@@ -150,6 +155,7 @@ const LandingHeader = () => {
               name={link.name}
               isComing={link.isComing}
               isActive={pathname === link.href}
+              redirect={link.redirect}
             />
           ))}
         </nav>
@@ -172,7 +178,7 @@ const ProductHeader = () => {
   const { ref, isVisible, setIsVisible } = ComponentVisible(false);
   const pathname = usePathname();
   const isDesktop = useMediaQuery('(min-width: 1024px)');
-  const { isConnected, account } = useActiveConnectionDetails();
+  const { isConnected, address } = useActiveConnectionDetails();
   return (
     <header className="w-full px-4 xl:px-8 relative overflow-hidden max-lg:bg-[#2F2F2F]/10 max-lg:backdrop-blur-[5.1px] h-[80px] max-lg:z-[10]">
       <div className="w-[120%] absolute bottom-0 left-[-10%] lg:h-[1.5px] h-[1px] bg-white/50 bg-blend-overlay">
@@ -206,6 +212,7 @@ const ProductHeader = () => {
               name={link.name}
               isComing={link.isComing}
               isActive={pathname === link.href}
+              redirect={link.redirect}
             />
           ))}
         </nav>

@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import cn from '@/library/utils/cn';
-import useActiveConnectionDetails from '@/library/hooks/web3/useActiveConnectionDetails';
-import { useConnectModal } from '@rainbow-me/rainbowkit';
-import { FALLBACK_CHAIN_ID } from '@/library/constants/default-chain-info';
-import { useSwitchChain } from 'wagmi';
-import isSupportedChain from '@/library/utils/is-supported-chain';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import cn from "@/library/utils/cn";
+import useActiveConnectionDetails from "@/library/hooks/web3/useActiveConnectionDetails";
+import { useConnectModal } from "@rainbow-me/rainbowkit";
+import { FALLBACK_CHAIN_ID } from "@/library/constants/default-chain-info";
+import { useSwitchChain } from "wagmi";
+import isSupportedChain from "@/library/utils/is-supported-chain";
 
 interface ButtonProps {
-  variant?: 'default' | 'primary' | 'secondary' | 'tertiary';
+  variant?: "default" | "primary" | "secondary" | "tertiary";
   className?: string;
   onClick?: () => void;
   children?: React.ReactNode;
@@ -26,18 +26,14 @@ interface ButtonProps {
 }
 
 const AnimateFill = ({
-  variant = 'primary',
+  variant = "primary",
 }: {
-  variant: 'default' | 'primary' | 'secondary' | 'tertiary';
+  variant: "default" | "primary" | "secondary" | "tertiary";
 }) => {
   return (
     <>
-      {variant === 'primary' && (
+      {variant === "primary" && (
         <>
-          {/* <div className="w-[60%] absolute left-0 top-0 h-[60%] bg-pastel-green-400 z-[-1] group-hover:-translate-x-[100%] group-hover:-translate-y-[100%] transition-all"></div>
-          <div className="w-[60%] absolute right-0 top-0 h-[60%] bg-pastel-green-400 z-[-1] group-hover:translate-x-[100%] group-hover:-translate-y-[100%] transition-all"></div>
-          <div className="w-[60%] absolute left-0 bottom-0 h-[60%] bg-pastel-green-400 z-[-1] group-hover:-translate-x-[100%] group-hover:translate-y-[100%] transition-all"></div>
-          <div className="w-[60%] absolute right-0 bottom-0 h-[60%] bg-pastel-green-400 z-[-1] transition-all group-hover:translate-x-[100%] group-hover:translate-y-[100%]"></div> */}
           <div className="w-5 h-5 absolute -left-[9px] -top-[13px] bg-pastel-green-400 group-hover:bg-pastel-green-500 z-[-1] rotate-[50deg]"></div>
           <div className="w-5 h-5 absolute -right-[9px] -bottom-[13px] bg-pastel-green-400 group-hover:bg-pastel-green-500 z-[-1] rotate-[50deg]"></div>
         </>
@@ -52,24 +48,24 @@ const Button = ({
   href,
   disabled,
   className,
-  variant = 'primary',
+  variant = "primary",
   icon,
   isComing = false,
   walletConfig,
   ...props
 }: ButtonProps) => {
   const variantClasses = {
-    default: 'button-default',
-    primary: 'button-primary',
-    secondary: 'button-secondary',
-    tertiary: 'button-tertiary',
+    default: "button-default",
+    primary: "button-primary",
+    secondary: "button-secondary",
+    tertiary: "button-tertiary",
   }[variant];
 
-  const disabledClasses = 'opacity-40 cursor-not-allowed';
+  const disabledClasses = "opacity-40 cursor-not-allowed";
 
   const mergeClassName = cn(
-    'button',
-    'group',
+    "button",
+    "group",
     variantClasses,
     { [disabledClasses]: disabled },
     className
@@ -85,7 +81,6 @@ const Button = ({
   const handleClick = () => {
     if (ensureWalletConnected()) {
       openConnectModal && openConnectModal();
-      // setOpenConnectionModal(true)
       return;
     }
     if (ensureChainSupported()) {
@@ -99,10 +94,10 @@ const Button = ({
     <div className="relative flex items-center justify-center">
       <span
         className={cn(
-          'transition-opacity duration-300',
-          'absolute',
-          'group-hover:opacity-0',
-          'opacity-100'
+          "transition-opacity duration-300",
+          "absolute",
+          "group-hover:opacity-0",
+          "opacity-100"
         )}
       >
         {children}
@@ -110,8 +105,8 @@ const Button = ({
 
       <span
         className={cn(
-          'transition-opacity duration-300',
-          'opacity-0 group-hover:opacity-100'
+          "transition-opacity duration-300",
+          "opacity-0 group-hover:opacity-100"
         )}
       >
         Coming Soon

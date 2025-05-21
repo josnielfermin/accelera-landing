@@ -3,15 +3,18 @@ export const menuLinksLanding = [
     name: 'HOME',
     href: '/',
     isComing: false,
+    redirect: false,
   },
   {
     name: 'SEASON ZERO',
     href: '/season-zero',
-    isComing: true,
+    isComing: false,
+    redirect: false,
   },
   {
     name: 'DOCS',
-    href: '/docs',
-    isComing: true,
+    href: 'https://docs.accelera.finance/',
+    isComing: false,
+    redirect: true,
   },
 ];

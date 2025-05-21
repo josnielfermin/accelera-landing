@@ -21,7 +21,7 @@ const LandingFooter = () => {
 };
 const ProductFooter = () => {
   return (
-    <footer className="w-full lg:py-6 lg:pt-6 lg:px-16 bg-[#2F2F2F]/30 border-t border-[#3B0A8F]/0 backdrop-blur-[6.44px] relative z-[2] max-lg:fixed max-lg:bottom-0">
+    <footer className="w-full lg:py-6 lg:pt-6 lg:px-16 bg-[#2F2F2F]/30 border-t border-[#3B0A8F]/0 backdrop-blur-[6.44px] relative z-[2] max-lg:fixed max-lg:z-[100] max-lg:bottom-0">
       <div className="flex gap-2 justify-between max-lg:justify-center items-center container">
         <Link
           href="/"

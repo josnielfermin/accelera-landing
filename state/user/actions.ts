@@ -1,11 +1,6 @@
-import { createAction } from '@reduxjs/toolkit'
+import { createAction } from '@reduxjs/toolkit';
+import { UsdeTokenState } from './types';
 
-export const resetUser = createAction('user/resetUser')
-export const updateSlippageTolerance = createAction<{ slippageTolerance: number | 'Auto' }>(
-  'user/updateSlippageTolerance'
-)
-export const setChart = createAction<boolean>('user/setChart')
-
-export const setCloseBanner = createAction<boolean>('user/setCloseBanner')
-
-export const setDashboardFilterSettings = createAction<string>('user/setDashboardFilterSettings')
+export const setUsdeTokenState = createAction<UsdeTokenState>(
+  'user/setUsdeTokenState'
+);

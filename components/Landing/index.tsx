@@ -14,7 +14,7 @@ const Landing = () => {
           <div className="w-[100vw] h-[100vh] rounded-full blur-sm [background:radial-gradient(circle,_rgba(92,_222,_102,_1)_20%,_rgba(92,_222,_102,_0.23)_70%)] absolute top-1/2 -translate-y-1/2  max-lg:hidden left-1/2 -translate-x-1/2 animate-vertical-light z-[100] bg-blend-overlay"></div>
         </div>
         <TitleAnimation />
-        <div className="flex items-start justify-between max-lg:flex-col lg:gap-8 lg:h-[66vh] lg:min-h-[470px] lg:!max-h-[470px] lg:mt-[100px] max-lg:max-w-[90%] max-lg:w-full lg:relative">
+        <div className="flex items-start justify-between max-lg:flex-col lg:gap-8 lg:h-[530px] 2xl:h-[470px] 2xl:mt-[100px] lg:mt-[60px] max-lg:max-w-[90%] max-lg:w-full lg:relative">
           <LeftColumn />
           <Accelera isLandingPage />
           <RightColumn />

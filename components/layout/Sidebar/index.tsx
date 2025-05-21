@@ -2,7 +2,7 @@ import { SOCIALS } from '@/components/Landing/Data';
 
 export default function SocialSidebar() {
   return (
-    <div className="lg:absolute lg:-right-[72px] lg:-top-[268px] flex flex-col max-lg:flex-row max-lg:items-center max-lg:justify-center gap-4 z-10 max-2xl:bg-woodsmoke-950 py-6 xl2:px-4 px-5">
+    <div className="lg:absolute lg:-right-[72px] 2xl:-top-[268px] lg:-top-[188px] flex flex-col max-lg:flex-row max-lg:items-center max-lg:justify-center gap-4 z-10 max-2xl:bg-woodsmoke-950 py-6 xl2:px-4 px-5">
       {SOCIALS.map(({ href, iconClass }, index) => (
         <a
           key={index}

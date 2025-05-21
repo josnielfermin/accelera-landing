@@ -17,7 +17,6 @@ const Backers = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({ left: 160, behavior: 'smooth' });
     }
-    console.log('first');
   };
 
   const handleLeft = () => {
@@ -32,7 +31,7 @@ const Backers = () => {
       if (!el) return;
 
       const maxScrollLeft = el.scrollWidth - el.offsetWidth;
-      const isAtEnd = el.scrollLeft + el.offsetWidth >= el.scrollWidth - 1; // margen de error
+      const isAtEnd = el.scrollLeft + el.offsetWidth >= el.scrollWidth - 1;
 
       if (isAtEnd) {
         el.scrollTo({ left: 0, behavior: 'smooth' });
@@ -51,7 +50,7 @@ const Backers = () => {
       </div>
       <div className="w-[1px] absolute top-0 right-0 h-[600px] bg-white/50 bg-blend-overlay z-[-9] max-lg:hidden"></div>
       <div className="absolute -top-2 -left-[56px] bg-[#D9D9D9] w-4 h-4 max-lg:hidden z-[5]"></div>
-      <div className="absolute -bottom-14 -right-2 bg-[#D9D9D9] w-4 h-4 max-lg:hidden z-[5]"></div>
+      <div className="absolute -bottom-7 -right-2 bg-[#D9D9D9] w-4 h-4 max-lg:hidden z-[5]"></div>
       <div className="flex items-center justify-between w-full relative z-[5]">
         <p className="max-lg:text-lg text-xl font-normal text-white">
           Backed by <span className="font-bold">The Best</span>

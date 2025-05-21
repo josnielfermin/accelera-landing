@@ -18,38 +18,24 @@ import isSupportedChain from '@/library/utils/is-supported-chain';
 import { mainnet } from 'viem/chains';
 import { shortenAddress } from '@/library/utils/short-address';
 import { Address } from 'viem';
+import { FALLBACK_CHAIN_ID } from '@/library/constants/default-chain-info';
 
 const AccountHandler = () => {
-  const pathname = usePathname();
-  const { isConnected, account } = useActiveConnectionDetails();
+  const { isConnected, address, validChainId, chainId } =
+    useActiveConnectionDetails();
   const isDesktop = useMediaQuery('(min-width: 1024px)');
-  const [openWrongChain, setOpenWrongChain] = useState<boolean>(false);
-  const [openConnectionModal, setOpenConnectionModal] =
-    useState<boolean>(false);
 
   const connections = useConnections();
 
   const { openConnectModal } = useConnectModal();
   const { openAccountModal } = useAccountModal();
-  const { openChainModal } = useChainModal();
 
-  const handlerConnectWallet = () => {
-    openConnectModal && openConnectModal();
-  };
-  const { chains, switchChain } = useSwitchChain();
-  const { address, chainId } = useAccount();
-  const { switchChainAsync } = useSwitchChain();
+  const { switchChain } = useSwitchChain();
   const wrongChain = !isSupportedChain(chainId);
 
   const primaryConnection = connections.find(
     (conn) => address && conn.accounts.includes(address)
   );
-
-  useEffect(() => {
-    if (wrongChain && isConnected) {
-      setOpenWrongChain(true);
-    }
-  }, [wrongChain, isConnected]);
 
   // const openSettings = (e: MouseEvent | TouchEvent): void => {
   //   e.stopPropagation()
@@ -63,9 +49,6 @@ const AccountHandler = () => {
             needWalletConnected: true,
             needSupportedChain: true,
           }}
-          // onClick={() => {
-          //   setIsConnected(true);
-          // }}
           variant={isDesktop ? 'primary' : 'secondary'}
           className="max-lg:w-fit"
         >
@@ -83,11 +66,10 @@ const AccountHandler = () => {
             onClick={() => {
               if (wrongChain) {
                 switchChain({
-                  chainId:
-                    Number(process.env.NEXT_PUBLIC_CHAINID) || mainnet.id,
+                  chainId: FALLBACK_CHAIN_ID,
                 });
               } else {
-                openConnectModal && openConnectModal();
+                // openConnectModal && openConnectModal();
                 openAccountModal && openAccountModal();
               }
             }}
@@ -97,14 +79,15 @@ const AccountHandler = () => {
             {wrongChain ? (
               <div className="icon-alert-02 text-[#EB5757] text-3xl"></div>
             ) : (
-              <div className="relative w-[32px] h-[32px]">
-                <Image
+              <div className="relative !w-[32px] !h-[32px] rounded-full bg-palm-green-950 flex items-center justify-center flex-shrink-0">
+                {/* <Image
                   src={'/static/images/landing/user-1-hover.png'}
                   alt=""
                   width={32}
                   height={32}
                   className="rounded-full !w-[32px] !h-[32px]"
-                />
+                /> */}
+                <div className="icon-user text-palm-green-400 text-xl"></div>
                 {primaryConnection?.connector?.icon !== '' &&
                 primaryConnection?.connector?.icon ? (
                   <Image
@@ -119,9 +102,9 @@ const AccountHandler = () => {
             )}
             <div className="flex items-center justify-between w-full">
               <div className="flex flex-col items-start">
-                <div className="text-[#F6F6F6] font-bold text-[10px] leading-normal">
-                  Muninn3562
-                </div>
+                {/* <div className="text-[#F6F6F6] font-bold text-[10px] leading-normal">
+                  {shortenAddress(address)}
+                </div> */}
                 <div className="flex items-center gap-2">
                   <div
                     className={`w-2 h-2 ${
@@ -129,7 +112,7 @@ const AccountHandler = () => {
                     } rounded-full`}
                   ></div>
                   <div className="text-[#F6F6F6] font-normal text-[10px] leading-normal">
-                    {shortenAddress(account as Address, 14)}
+                    {shortenAddress(address)}
                   </div>
                 </div>
               </div>

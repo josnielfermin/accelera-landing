@@ -11,36 +11,29 @@ import {
   rabbyWallet,
   rainbowWallet,
   trustWallet,
-  walletConnectWallet,
+  // walletConnectWallet,
 } from '@rainbow-me/rainbowkit/wallets';
-import { mainnet } from 'wagmi/chains';
-import { fallback, http, webSocket } from 'wagmi';
+import { blastSepolia } from 'wagmi/chains';
+import { createStorage, fallback, http, webSocket } from 'wagmi';
 
 export const wagmiConfig = getDefaultConfig({
   appName: 'Accelera-Landing',
   projectId: '098c622631d0002b8dac693515f3b7d8',
-  chains: [
-    {
-      ...mainnet,
-      iconUrl: '/static/chains/mainnet.png',
-    },
-  ],
+  chains: [blastSepolia],
+  // storage: createStorage({
+  //   storage: localStorage,
+  // }),
   transports: {
-    [mainnet.id]: fallback(
-      [
-        // http('https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID'),  // RPC para la mainnet
-        // webSocket('wss://mainnet.infura.io/ws/v3/YOUR_INFURA_PROJECT_ID'),  // WebSocket para la mainnet
-      ],
-      { retryCount: 5 }
-    ),
+    [blastSepolia.id]: http(),
   },
+
   wallets: [
     {
       groupName: 'Popular',
       wallets: [
         metaMaskWallet,
         rabbyWallet,
-        walletConnectWallet,
+        // walletConnectWallet,
         coinbaseWallet,
       ],
     },

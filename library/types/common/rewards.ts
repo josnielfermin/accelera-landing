@@ -1,5 +1,6 @@
 import { Address } from 'viem';
 export interface Reward {
+  id: number;
   address: Address;
   token: string;
   balance: number;

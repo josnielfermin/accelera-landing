@@ -21,7 +21,7 @@ const TitleAnimation = () => {
   }, []);
 
   return (
-    <div className="lg:mt-10 relative h-[8rem] overflow-hidden flex items-center justify-center max-lg:justify-start max-lg:items-end w-full max-lg:max-w-[90%] z-[5]">
+    <div className="2xl:mt-10 relative lg:top-4 max-lg:mt-1 h-[8rem] overflow-hidden flex items-center justify-center max-lg:justify-start max-lg:items-end w-full max-lg:max-w-[90%] z-[5]">
       <h1
         className={`max-lg:text-[26px] text-4xl max-xl:text-5xl max-2xl:text-6xl 2xl:text-[80px] max-lg:leading-[1.1] font-normal text-white absolute transition-all duration-500 h-[96px]`}
       >

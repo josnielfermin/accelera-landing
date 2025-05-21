@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ethersproject/providers": "^5.8.0",
+    "@cryptoalgebra/integral-sdk": "^0.12.5",
     "@rainbow-me/rainbowkit": "2.2.1",
     "@reduxjs/toolkit": "^2.7.0",
     "@tanstack/react-query": "^5.74.11",

@@ -32,6 +32,7 @@ const TableHeaderCells: TableHeaderCell[] = [
 
 const REWARDS: Reward[] = [
   {
+    id: 0,
     address: '0x',
     token: 'ACCEL',
     balance: 0,
@@ -40,6 +41,7 @@ const REWARDS: Reward[] = [
     action: 'deposit',
   },
   {
+    id: 1,
     address: '0x',
     token: 'ACCEL',
     balance: 0,
@@ -48,6 +50,7 @@ const REWARDS: Reward[] = [
     action: 'deposit',
   },
   {
+    id: 2,
     address: '0x',
     token: 'ACCEL',
     balance: 0,
@@ -56,6 +59,7 @@ const REWARDS: Reward[] = [
     action: 'deposit',
   },
   {
+    id: 3,
     address: '0x',
     token: 'ACCEL',
     balance: 0,
@@ -64,6 +68,7 @@ const REWARDS: Reward[] = [
     action: 'deposit',
   },
   {
+    id: 4,
     address: '0x',
     token: 'ACCEL',
     balance: 0,
@@ -72,6 +77,7 @@ const REWARDS: Reward[] = [
     action: 'deposit',
   },
   {
+    id: 5,
     address: '0x',
     token: 'ACCEL',
     balance: 0,
@@ -80,6 +86,7 @@ const REWARDS: Reward[] = [
     action: 'deposit',
   },
   {
+    id: 6,
     address: '0x',
     token: 'ACCEL',
     balance: 0,
@@ -88,6 +95,7 @@ const REWARDS: Reward[] = [
     action: 'deposit',
   },
   {
+    id: 7,
     address: '0x',
     token: 'ACCEL',
     balance: 0,
@@ -96,6 +104,7 @@ const REWARDS: Reward[] = [
     action: 'deposit',
   },
   {
+    id: 8,
     address: '0x',
     token: 'ACCEL',
     balance: 0,
@@ -104,6 +113,7 @@ const REWARDS: Reward[] = [
     action: 'deposit',
   },
   {
+    id: 9,
     address: '0x',
     token: 'ACCEL',
     balance: 0,
@@ -112,6 +122,7 @@ const REWARDS: Reward[] = [
     action: 'deposit',
   },
   {
+    id: 10,
     address: '0x',
     token: 'ACCEL',
     balance: 0,

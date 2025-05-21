@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Address } from "viem";
 import { useAccount } from "wagmi";
-import isSupportedChain from "../../utils/is-supported-chain";
-import { FALLBACK_CHAIN_ID } from "../../constants/default-chain-info";
+
 import { useMemo } from "react";
+import isSupportedChain from "@/library/utils/is-supported-chain";
+import { FALLBACK_CHAIN_ID } from "@/library/constants/default-chain-info";
 
 interface IActiveConnectionDetails {
   chainId?: number;

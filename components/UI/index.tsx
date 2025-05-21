@@ -3,6 +3,7 @@ import Button from './Button';
 import Modal from './Modal';
 import Input from './Input';
 import Slider from './Slider';
+import Card from './Card';
 import {
   TableBody,
   TableCell,
@@ -25,4 +26,5 @@ export {
   TableSkeleton,
   TableHead,
   Toast,
+  Card,
 };

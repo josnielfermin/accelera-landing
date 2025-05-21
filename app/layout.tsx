@@ -12,6 +12,10 @@ import { midnightTheme, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import AppUpdater from '@/state/updater';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ToastProvider } from '@/context/ToastContext';
+import { FALLBACK_CHAIN_ID } from '@/library/constants/default-chain-info';
+import { Provider } from 'react-redux';
+import store, { persistor } from '@/state';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const instrumentSans = Instrument_Sans({
   weight: ['400', '500', '600', '700'],
@@ -23,31 +27,35 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="antialiased">
       <body
-        suppressHydrationWarning={true}
+        // suppressHydrationWarning={true}
         className={`${instrumentSans.className} relative min-h-screen flex flex-col`}
       >
-        <ToastProvider>
-          <WagmiProvider config={wagmiConfig}>
-            <QueryClientProvider client={queryClient}>
-              <RainbowKitProvider
-                initialChain={mainnet.id}
-                theme={midnightTheme({
-                  accentColor: '#5cde66',
-                  accentColorForeground: 'black',
-                  fontStack: 'system',
-                  overlayBlur: 'small',
-                })}
-              >
-                <AppUpdater />
-                <Header />
-                <div className="overflow-hidden">
-                  {children}
-                  <Footer />
-                </div>
-              </RainbowKitProvider>
-            </QueryClientProvider>
-          </WagmiProvider>
-        </ToastProvider>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <ToastProvider>
+              <WagmiProvider config={wagmiConfig}>
+                <QueryClientProvider client={queryClient}>
+                  <RainbowKitProvider
+                    initialChain={FALLBACK_CHAIN_ID}
+                    theme={midnightTheme({
+                      accentColor: '#5cde66',
+                      accentColorForeground: 'black',
+                      fontStack: 'system',
+                      overlayBlur: 'small',
+                    })}
+                  >
+                    <AppUpdater />
+                    <Header />
+                    <div className="overflow-hidden">
+                      {children}
+                      <Footer />
+                    </div>
+                  </RainbowKitProvider>
+                </QueryClientProvider>
+              </WagmiProvider>
+            </ToastProvider>
+          </PersistGate>
+        </Provider>
       </body>
     </html>
   );

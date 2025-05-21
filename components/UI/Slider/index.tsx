@@ -1,14 +1,32 @@
 'use client';
+import { toBN } from '@/library/utils/numbers';
 import { useState, useRef, useEffect } from 'react';
 
 interface SliderProps {
   ticks?: number[];
+  setValue: (value: number | string) => void;
+  maxValue: number;
+  currentValue: number;
 }
 
-const Slider = ({ ticks = [0, 25, 50, 75, 100] }: SliderProps) => {
-  const [progress, setProgress] = useState(25);
+const Slider = ({
+  ticks = [0, 25, 50, 75, 100],
+  currentValue,
+  maxValue,
+  setValue,
+}: SliderProps) => {
+  const DEFAULT_VALUE = 0;
+  const [progress, setProgress] = useState(DEFAULT_VALUE);
   const [isDragging, setIsDragging] = useState(false);
   const progressRef = useRef<HTMLDivElement>(null);
+
+  // Update progress when currentValue changes from outside
+  useEffect(() => {
+    if (!isDragging && currentValue !== undefined) {
+      const newProgress = (Number(currentValue) / maxValue) * 100;
+      setProgress(newProgress);
+    }
+  }, [currentValue, maxValue, isDragging]);
 
   const handleSeek = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const progressBar = progressRef.current;
@@ -37,6 +55,11 @@ const Slider = ({ ticks = [0, 25, 50, 75, 100] }: SliderProps) => {
     const newProgress = (clampedX / width) * 100;
 
     setProgress(newProgress);
+    const raw = toBN(newProgress).div(100).times(maxValue);
+    const formatted = raw.isGreaterThan(0.0001)
+      ? raw.toFixed(4)
+      : raw.toPrecision(4);
+    setValue(formatted);
   };
 
   const handleDragEnd = () => {
@@ -82,12 +105,12 @@ const Slider = ({ ticks = [0, 25, 50, 75, 100] }: SliderProps) => {
             style={{ width: `${progress}%` }}
           ></div>
           <div
-            className="flex items-center justify-center w-6 h-6 bg-pastel-green-400/50 rotate-45 absolute top-1/2 -translate-y-1/2 touch-none"
+            className="flex items-center justify-center w-6 h-6 max-lg:w-4 max-lg:h-4 bg-pastel-green-400/50 rotate-45 absolute top-1/2 -translate-y-1/2 touch-none"
             style={{ left: `calc(${progress}% - 12px)` }}
             onMouseDown={handleDragStart}
             onTouchStart={handleDragStart}
           >
-            <div className="flex items-center justify-center w-3 h-3 bg-pastel-green-400"></div>
+            <div className="flex items-center justify-center w-3 h-3 max-lg:w-2 max-lg:h-2 bg-pastel-green-400"></div>
           </div>
         </div>
         <div

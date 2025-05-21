@@ -13,7 +13,7 @@ import useActiveConnectionDetails from '@/library/hooks/web3/useActiveConnection
 
 const SeasonZero = () => {
   const [openModal, setOpenModal] = useState(false);
-  const { isConnected, account } = useActiveConnectionDetails();
+  const { isConnected, address } = useActiveConnectionDetails();
   return (
     <main className="w-full h-full max-lg:pb-12 pb-[40px]">
       <BackgroundDecorator />
@@ -28,8 +28,8 @@ const SeasonZero = () => {
         </div>
         {isConnected && (
           <>
-            <Rewards />
-            <div className="w-full h-[355px]">
+            {/* <Rewards /> */}
+            <div className="w-full max-h-[800px] pb-5">
               <FAQs />
             </div>
           </>

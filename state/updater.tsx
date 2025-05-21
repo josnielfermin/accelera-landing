@@ -1,10 +1,5 @@
-'use client';
-import UserUpdater from './user/updater';
+"use client";
 
 export default function AppUpdater() {
-  return (
-    <>
-      <UserUpdater />
-    </>
-  );
+  return <></>;
 }

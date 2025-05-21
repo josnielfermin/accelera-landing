@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { Input, Button, Slider } from '@/components/UI';
+import { Input, Card } from '@/components/UI';
 import { shortenAddress } from '@/library/utils/short-address';
 import { useToast } from '@/context/ToastContext';
 
@@ -20,7 +20,6 @@ const TransactionPanel = () => {
   const { showToast } = useToast();
 
   const handleCopy = () => {
-    console.log('copy :>> ');
     showToast({
       message: 'Link copied to clipboard',
       iconClass: 'icon-bulb',
@@ -45,7 +44,7 @@ const TransactionPanel = () => {
         </span>
       </div>
       <div className="flex flex-col gap-2 w-full px-5 mt-2 mb-4">
-        <div className="flex items-center justify-between w-[98%]">
+        <div className="flex items-center justify-between w-[98%] px-1">
           <div className="text-woodsmoke-50 text-xs font-normal">Address</div>
           <div className="text-woodsmoke-50 text-xs font-normal">
             Points Earned
@@ -68,7 +67,7 @@ const TransactionPanel = () => {
         </div>
       </div>
       <div className="px-5 pt-4 pb-8 bg-[#141815] backdrop-blur-[15px] rounded-[20px] flex flex-col items-center gap-2 w-full">
-        <div className="text-sm font-normal text-pastel-green-50 w-full ml-12 mt-[17px]">
+        <div className="text-sm font-normal text-pastel-green-50 w-full mt-[17px] px-1">
           Your Referral Link
         </div>
         <div className="relative w-full">
@@ -76,7 +75,7 @@ const TransactionPanel = () => {
             placeholder="Enter a Link"
             inputClassName="w-auto"
             value={referralLink}
-            onInput={(e: any) => setReferralLink(e.target.value)}
+            onInput={(e: any) => setReferralLink(e)}
             postfix={
               <div className="flex items-center gap-1">
                 <div
@@ -90,24 +89,24 @@ const TransactionPanel = () => {
           />
         </div>
         <div className="flex items-center gap-4 select-none w-full">
-          <div className="rounded-[20px] bg-[#1A201C] relative flex flex-col min-w-[105px] lg:min-w-[150px] w-full pt-7 px-4 lg:pb-[17px] pb-3 gap-4">
-            <div className="absolute right-2 top-2 rounded-full w-7 h-7 [background:linear-gradient(0deg,_#354239_0%,_#354239_100%)] flex items-center justify-center">
-              <span className="icon-users text-pastel-green-500 text-xs"></span>
-            </div>
-            <div className="text-woodsmoke-50 text-2xl font-normal">0</div>
-            <div className="text-[10px] font-normal text-woodsmoke-50">
-              Total Referred Users
-            </div>
-          </div>
-          <div className="rounded-[20px] bg-[#1A201C] relative flex flex-col min-w-[105px] lg:min-w-[150px] w-full pt-7 px-4 lg:pb-[17px] pb-3 gap-4">
-            <div className="absolute right-2 top-2 rounded-full w-7 h-7 [background:linear-gradient(0deg,_#354239_0%,_#354239_100%)] flex items-center justify-center">
-              <span className="icon-rocket-1 text-pastel-green-500 text-xs"></span>
-            </div>
-            <div className="text-woodsmoke-50 text-2xl font-normal">0</div>
-            <div className="text-[10px] font-normal text-woodsmoke-50">
-              Total Points Earned
-            </div>
-          </div>
+          <Card
+            title={'Total Referred Users'}
+            value={0}
+            icon={
+              <div className="absolute right-2 top-2 rounded-full w-7 h-7 [background:linear-gradient(0deg,_#354239_0%,_#354239_100%)] flex items-center justify-center">
+                <span className="icon-users text-pastel-green-500 text-xs"></span>
+              </div>
+            }
+          />
+          <Card
+            title={'Total Points Earned'}
+            value={0}
+            icon={
+              <div className="absolute right-2 top-2 rounded-full w-7 h-7 [background:linear-gradient(0deg,_#354239_0%,_#354239_100%)] flex items-center justify-center">
+                <span className="icon-rocket-1 text-pastel-green-500 text-xs"></span>
+              </div>
+            }
+          />
         </div>
       </div>
     </div>

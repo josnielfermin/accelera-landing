@@ -206,7 +206,6 @@ const Mobile = ({ openModal, setOpenModal }: SubscribeProps) => {
 };
 const Subscribe = ({ openModal, setOpenModal }: SubscribeProps) => {
   const isDesktop = useMediaQuery('(min-width: 1024px)');
-  console.log(isDesktop);
   return (
     <>
       {isDesktop ? (

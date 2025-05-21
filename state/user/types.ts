@@ -1,7 +1,8 @@
+export interface UsdeTokenState {
+  balance: bigint | null;
+  allowance: bigint | null;
+  lastUpdated: number | null;
+}
 export interface UserState {
-  userDarkMode: boolean
-  slippageTolerance: number | 'Auto'
-  showChart: boolean
-  closeBanner: boolean
-  dashboardFilterSettings: string
+  UsdeTokenState: UsdeTokenState;
 }

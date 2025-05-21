@@ -14,11 +14,6 @@ export const SOCIALS = [
     iconClass: 'icon-gitbook',
     loaded: false,
   },
-  {
-    href: 'https://telegram/accelera',
-    iconClass: 'icon-telegram-1',
-    loaded: false,
-  },
 ];
 
 export const USERS = [

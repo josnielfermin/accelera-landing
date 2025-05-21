@@ -1,64 +1,44 @@
-import { useCallback } from 'react'
-import { useAppDispatch, useAppSelector } from '..'
-import { resetUser, updateSlippageTolerance, setChart, setCloseBanner, setDashboardFilterSettings } from './actions'
+import { useCallback } from 'react';
+import { useAppDispatch, useAppSelector } from '..';
+import { setUsdeTokenState } from './actions';
+import { useToken } from '@/library/hooks/web3/use-token';
+import {
+  PREDEPOSIT_VAULT_ADDRESS,
+  USDE_ADDRESS,
+} from '@/library/constants/addresses';
+import SupportedChainIds from '@/library/types/supported-chain-ids.enum';
+import useActiveConnectionDetails from '@/library/hooks/web3/useActiveConnectionDetails';
 
-export function useResetUser() {
-  const dispatch = useAppDispatch()
-  return useCallback(() => {
-    dispatch(resetUser())
-  }, [dispatch])
-}
-
-export function useSetSlippageToleranceCallback(): (slippageTolerance: number | 'Auto') => void {
-  const dispatch = useAppDispatch()
-  return useCallback(
-    (slippageTolerance: number | 'Auto') => {
-      dispatch(updateSlippageTolerance({ slippageTolerance }))
-    },
-    [dispatch]
-  )
+export function useUsdeTokenState() {
+  return useAppSelector((state) => state.user.UsdeTokenState);
 }
 
-export function useSetDashboardFilterSettings() {
-  const dispatch = useAppDispatch()
-  return useCallback(
-    (dashboardFilterSettings: string) => {
-      dispatch(setDashboardFilterSettings(dashboardFilterSettings))
-    },
-    [dispatch]
-  )
-}
+export function useRefreshUsdeToken(validChainId: SupportedChainIds) {
+  const dispatch = useAppDispatch();
+  const { address, isConnected } = useActiveConnectionDetails();
 
-export function useSlippageTolerance(): number | 'Auto' {
-  return useAppSelector((state) => state.user.slippageTolerance)
-}
+  const tokenResult = useToken(USDE_ADDRESS[validChainId], validChainId, {
+    includeBalance: true,
+    includeAllowance: true,
+    spender: PREDEPOSIT_VAULT_ADDRESS[validChainId],
+  });
 
-export function useSetChart() {
-  const dispatch = useAppDispatch()
-  return useCallback(
-    (showChart: boolean) => {
-      dispatch(setChart(showChart))
-    },
-    [dispatch]
-  )
-}
-export function useCloseBanner() {
-  const dispatch = useAppDispatch()
-  return useCallback(
-    (closeBanner: boolean) => {
-      dispatch(setCloseBanner(closeBanner))
-    },
-    [dispatch]
-  )
-}
+  const fetchAndStore = useCallback(async () => {
+    if (!isConnected) return;
+    await tokenResult.refetch();
+    dispatch(
+      setUsdeTokenState({
+        balance: tokenResult.balance !== null ? tokenResult.balance : null,
+        allowance:
+          tokenResult.allowance !== null ? tokenResult.allowance : null,
+        lastUpdated: Date.now(),
+      })
+    );
+  }, [dispatch, tokenResult]);
 
-export function useShowChart(): boolean {
-  return useAppSelector((state) => state.user.showChart)
-}
-export function useShowBanner(): boolean {
-  return useAppSelector((state) => state.user.closeBanner)
-}
-
-export function useDashboardFilterSettings(): string {
-  return useAppSelector((state) => state.user.dashboardFilterSettings)
+  return {
+    fetchAndStore,
+    currentBalance: tokenResult.balance,
+    currentAllowance: tokenResult.allowance,
+  };
 }
